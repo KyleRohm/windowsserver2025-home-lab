@@ -58,7 +58,6 @@ A new virtual machine was created in VMware Workstation.
 - Storage: 60 GB
 - Network: NAT
 
-VM settings:
 ![Windows Server VM Settings](screenshots/01-windows-server-2025-vm-settings.png)
 
 ---
