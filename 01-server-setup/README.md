@@ -53,7 +53,7 @@ A new virtual machine was created in VMware Workstation.
 - Storage: [60] GB
 - Network: [NAT]
 
-git add .
+01-windows-server-2025-vm-settings.png
 
 ---
 
