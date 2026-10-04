@@ -29,15 +29,12 @@ eventually be configured as a Domain Controller and File Server.
 | Operating System | Windows Server 2025 |
 | Edition | [Standard] |
 | Installation Type | [Desktop Experience] |
-| CPU | [2] vCPUs |
-| Memory | [8 GB] |
-| Storage | [80 GB] |
-| Network Adapter | [NAT/Bridged/Host-only] |
-| Server Name | [SERVER-01] |
-| IP Address | [192.168.x.x] |
-| Subnet Mask | [255.255.255.0] |
-| Default Gateway | [192.168.x.x] |
-| DNS Server | [192.168.x.x] |
+| Number of processors | [2] |
+| Number of cores per processor | [2] |
+| Memory | [4 GB] |
+| Storage | [60 GB] |
+| Network Adapter | [NAT] |
+| Server Name | [Windows Server 2025] |
 
 ---
 
