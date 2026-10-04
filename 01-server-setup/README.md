@@ -117,7 +117,7 @@ After installation, the server was configured with basic settings required for t
 
 ---
 
-## 4. Network Configuration
-The server was configured with a static IP address to provide a consistent network address for future Active Directory services.
-...
+### Enable Remote Management
 
+Server Manager → Local Server
+Changed Remote management to 'Enabled'.
