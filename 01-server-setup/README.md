@@ -2,11 +2,9 @@
 
 ## Overview
 
-This project documents the installation and initial configuration of a
-Windows Server 2025 virtual machine using VMware Workstation.
+This project documents the installation and initial configuration of a Windows Server 2025 virtual machine using VMware Workstation.
 
-This server will serve as the foundation for the home lab and will
-eventually be configured as a Domain Controller and File Server.
+This server will serve as the foundation for the home lab and will eventually be configured as a Domain Controller and File Server.
 
 ## Objectives
 
@@ -87,39 +85,26 @@ virtual machine and the operating system installation was completed.
 
 ## 3. Initial Server Configuration
 
-After installation, the server was configured with basic settings
-required for the home lab.
+After installation, the server was configured with basic settings required for the home lab.
 
-### Configuration
+### Post-Installation Steps
 
-- Server hostname configured
-- Time zone verified
-- Windows Updates installed
-- Network connectivity tested
-- Windows Firewall verified
-- Server Manager reviewed
+- Installed VMware Tools to enable graphics acceleration and mouse integration.
+- Verified system time zone alignment.
+- Ran Windows Update to ensure all security patches are current.
 
-### Hostname
+![VMware Tools Install](screenshots/03-vmware-tools-installation.png)
 
-The server was renamed to:
+### Hostname Configuration
 
-`[SERVER-01]`
+- Run → sysdm.cpl → Computer Name → Change...
+- Renamed computer name to `[FileServer01]` and restarted.
 
-### Screenshot
-
-![Server Manager](screenshots/04-server-manager.png)
+![Hostname Change](screenshots/04-server-hostname-change.png)
 
 ---
 
 ## 4. Network Configuration
+The server was configured with a static IP address to provide a consistent network address for future Active Directory services.
+...
 
-The server was configured with a static IP address to provide a
-consistent network address for future Active Directory services.
-
-### Network Configuration
-
-```text
-IP Address:      [192.168.x.x]
-Subnet Mask:     [255.255.255.0]
-Default Gateway: [192.168.x.x]
-Preferred DNS:   [192.168.x.x]
