@@ -81,8 +81,6 @@ virtual machine and the operating system installation was completed.
 8. Created the initial local administrator account.
 9. Logged into Windows Server for the first time.
 
-### Screenshot
-
 ![Windows Server Installation](screenshots/02-windows-server-2025-home-screen.png)
 
 ---
