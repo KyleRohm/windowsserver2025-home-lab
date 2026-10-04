@@ -87,11 +87,10 @@ virtual machine and the operating system installation was completed.
 
 After installation, the server was configured with basic settings required for the home lab.
 
-### Post-Installation Steps
+### VMware Tools Installation
 
+- VM → Install VMware Tools
 - Installed VMware Tools to enable graphics acceleration and mouse integration.
-- Verified system time zone alignment.
-- Ran Windows Update to ensure all security patches are current.
 
 ![VMware Tools Install](screenshots/03-vmware-tools-installation.png)
 
@@ -101,6 +100,20 @@ After installation, the server was configured with basic settings required for t
 - Renamed computer name to `[FileServer01]` and restarted.
 
 ![Hostname Change](screenshots/04-server-hostname-change.png)
+
+### Change Time Zone
+
+- Settings → Time & language → Date & time
+- Changed to correct time zone.
+
+![Changed Time Zone](screenshots/05-update-time-zone.png)
+
+### Install Windows Updates
+
+- Settings → Windows Update
+- Ran Windows Update to ensure system is up-to-date.
+
+![Install Windows Updates](screenshots/06-windows-updates.png)
 
 ---
 
