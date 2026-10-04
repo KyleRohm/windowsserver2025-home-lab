@@ -58,6 +58,7 @@ A new virtual machine was created in VMware Workstation.
 - Storage: 60 GB
 - Network: NAT
 
+VM settings:
 ![Windows Server VM Settings](screenshots/01-windows-server-2025-vm-settings.png)
 
 ---
@@ -92,12 +93,13 @@ After installation, the server was configured with basic settings required for t
 - VM → Install VMware Tools
 - Installed VMware Tools to enable graphics acceleration and mouse integration.
 
+Ran VMware installation wizard from the (D:) drive:
 ![VMware Tools Install](screenshots/03-vmware-tools-installation.png)
 
 ### Hostname Configuration
 
 - Run → sysdm.cpl → Computer Name → Change...
-- Renamed computer name to `FileServer01` and restarted.
+- Configured the hostname to 'FileServer01'.
 
 ![Hostname Change](screenshots/04-server-hostname-change.png)
 
