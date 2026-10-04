@@ -32,14 +32,14 @@ This server will serve as the foundation for the home lab and will eventually be
 |---|---|
 | Hypervisor | VMware Workstation |
 | Operating System | Windows Server 2025 |
-| Edition | [Standard] |
-| Installation Type | [Desktop Experience] |
-| Number of processors | [2] |
-| Number of cores per processor | [2] |
-| Memory | [4 GB] |
-| Storage | [60 GB] |
-| Network Adapter | [NAT] |
-| Server Name | [Windows Server 2025] |
+| Edition | Standard |
+| Installation Type | Desktop Experience |
+| Number of processors | 2 |
+| Number of cores per processor | 2 |
+| Memory | 4 GB |
+| Storage | 60 GB |
+| Network Adapter | NAT |
+| Server Name | Windows Server 2025 |
 
 ---
 
@@ -52,11 +52,11 @@ A new virtual machine was created in VMware Workstation.
 - Virtual machine name: `Windows Server 2025`
 - Guest operating system: Microsoft Windows
 - Version: Windows Server 2025
-- Number of processors: [2]
-- Number of cores per processor: [2]
-- Memory: [4] GB
-- Storage: [60] GB
-- Network: [NAT]
+- Number of processors: 2
+- Number of cores per processor: 2
+- Memory: 4 GB
+- Storage: 60 GB
+- Network: NAT
 
 ![Windows Server VM Settings](screenshots/01-windows-server-2025-vm-settings.png)
 
@@ -97,7 +97,7 @@ After installation, the server was configured with basic settings required for t
 ### Hostname Configuration
 
 - Run → sysdm.cpl → Computer Name → Change...
-- Renamed computer name to `[FileServer01]` and restarted.
+- Renamed computer name to `FileServer01` and restarted.
 
 ![Hostname Change](screenshots/04-server-hostname-change.png)
 
