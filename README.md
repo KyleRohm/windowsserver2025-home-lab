@@ -2,30 +2,82 @@
 
 ## Overview
 
+This project documents the design, deployment, configuration, and
+administration of a Windows Server 2025 home lab running in VMware
+Workstation.
+
+The goal of this lab is to develop hands-on experience with Windows
+Server administration, Active Directory, DNS, domain management,
+file-server configuration, permissions, and troubleshooting.
+
+The lab is being built incrementally, with each phase documented
+along the way.
+
+---
+
 ## Lab Objectives
+
+- Deploy Windows Server 2025 as a virtual machine
+- Configure and administer Windows Server
+- Install and configure Active Directory Domain Services (AD DS)
+- Configure DNS for the Active Directory environment
+- Create and manage Organizational Units (OUs)
+- Create and manage users and security groups
+- Join Windows client computers to the domain
+- Configure a Windows file server
+- Configure shared folders
+- Implement NTFS and share permissions
+- Test access using different user accounts and security groups
+- Troubleshoot common Windows networking, authentication, and
+  permissions issues
+- Document the configuration and troubleshooting process
+
+---
 
 ## Lab Environment
 
+| Component | Technology |
+|---|---|
+| Hypervisor | VMware Workstation |
+| Server OS | Windows Server 2025 |
+| Client OS | Windows 11 |
+| Directory Services | Active Directory Domain Services |
+| DNS | Windows Server DNS |
+| File Services | Windows Server File Server |
+| Virtual Networking | VMware virtual networking |
+
+### Virtual Machines
+
+| VM | Operating System | Role | Status |
+|---|---|---|---|
+| FileServer01 | Windows Server 2025 | Server / File Server | 🟢 In Progress |
+| Client01 | Windows 11 | Domain-Joined Client | ⚪ Planned |
+
+> **Note:** The lab environment will be expanded as additional
+> services and client systems are added.
+
+---
+
 ## Network Architecture
 
-## Windows Server 2025 Installation
+The lab uses VMware virtual networking to allow the virtual machines
+to communicate with each other and access the network.
 
-## Active Directory Domain Services
+### Planned Architecture
 
-## DNS Configuration
-
-## Organizational Units
-
-## User and Security Group Management
-
-## Domain-Joined Windows Computers
-
-## File Server Configuration
-
-## NTFS Permissions
-
-## Shared Folder Permissions
-
-## Troubleshooting
-
-## Skills Demonstrated
+```text
+                    Home Network
+                         │
+                    VMware Network
+                         │
+              ┌──────────┴──────────┐
+              │                     │
+        FileServer01             Client01
+     Windows Server 2025          Windows 11
+              │                     │
+              │                     │
+       Active Directory ◄───────────┘
+              │
+             DNS
+              │
+        File Services
