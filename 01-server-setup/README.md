@@ -11,11 +11,10 @@ This server will serve as the foundation for the home lab and will eventually be
 - Create a Windows Server 2025 virtual machine
 - Configure the VM's hardware resources
 - Install Windows Server 2025
-- Configure the server hostname
-- Configure network connectivity
+- Install VMware Tools
+- Configure the server hostname and timezone
+- Enable Remote Management
 - Apply Windows Updates
-- Prepare the server for Active Directory Domain Services
-- Document the installation and troubleshooting process
 
 ---
 
@@ -50,13 +49,13 @@ A new virtual machine was created in VMware Workstation.
 ### VM Configuration
 
 - Virtual machine name: `Windows Server 2025`
-- Guest operating system: Microsoft Windows
-- Version: Windows Server 2025
-- Number of processors: 2
-- Number of cores per processor: 2
-- Memory: 4 GB
-- Storage: 60 GB
-- Network: NAT
+- Guest operating system: `Microsoft Windows`
+- Version: `Windows Server 2025`
+- Number of processors: `2`
+- Number of cores per processor: `2`
+- Memory: `4 GB`
+- Storage: `60 GB`
+- Network: `NAT`
 
 ![Windows Server VM Settings](screenshots/01-windows-server-2025-vm-settings.png)
 
@@ -71,8 +70,8 @@ virtual machine and the operating system installation was completed.
 
 1. Booted the VM from the Windows Server 2025 installation file.
 2. Selected the appropriate language settings.
-3. Selected "Install Windows Server".
-4. Selected the Windows Server 2025 Standard (Desktop Experience) installation option.
+3. Selected `Install Windows Server`.
+4. Selected the `Windows Server 2025 Standard (Desktop Experience)` installation option.
 5. Accepted the Microsoft Software License Terms.
 6. Selected the virtual disk as the installation destination.
 7. Completed the Windows installation.
@@ -98,7 +97,7 @@ Ran VMware installation wizard from the (D:) drive:
 ### Hostname Configuration
 
 - Run → sysdm.cpl → Computer Name → Change...
-- Configured the hostname to 'FileServer01'.
+- Configured the hostname to `FileServer01`.
 
 ![Hostname Change](screenshots/04-server-hostname-change.png)
 
@@ -109,18 +108,18 @@ Ran VMware installation wizard from the (D:) drive:
 
 ![Changed Time Zone](screenshots/05-update-time-zone.png)
 
+### Enable Remote Management
+
+Server Manager → Local Server
+Changed Remote management to `Enabled`.
+
+![Enable Remote Management](screenshots/06-enable-remote-management.png)
+
 ### Install Windows Updates
 
 - Settings → Windows Update
 - Ran Windows Update to ensure system is up-to-date.
 
-![Install Windows Updates](screenshots/06-windows-updates.png)
+![Install Windows Updates](screenshots/07-windows-updates.png)
 
 ---
-
-### Enable Remote Management
-
-Server Manager → Local Server
-Changed Remote management to 'Enabled'.
-
-![Enable Remote Management](screenshots/07-enable-remote-management.png)
