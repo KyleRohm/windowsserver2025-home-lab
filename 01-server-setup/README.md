@@ -121,3 +121,5 @@ After installation, the server was configured with basic settings required for t
 
 Server Manager → Local Server
 Changed Remote management to 'Enabled'.
+
+![Enable Remote Management](screenshots/07-enable-remote-management.png)
