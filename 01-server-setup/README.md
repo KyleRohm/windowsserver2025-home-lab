@@ -21,6 +21,13 @@ eventually be configured as a Domain Controller and File Server.
 
 ---
 
+## Prerequisites
+
+- Meet the system requirements for VMware Workstation and Windows Server 2025
+- Have VMware Workstation installed
+
+---
+
 ## Lab Environment
 
 | Component | Configuration |
@@ -64,18 +71,19 @@ virtual machine and the operating system installation was completed.
 
 ### Installation Steps
 
-1. Booted the VM from the Windows Server 2025 installation media.
-2. Selected the appropriate Windows Server 2025 edition.
-3. Selected the Desktop Experience installation option.
-4. Accepted the Microsoft Software License Terms.
-5. Selected the virtual disk as the installation destination.
-6. Completed the Windows installation.
-7. Created the initial local administrator account.
-8. Logged into Windows Server for the first time.
+1. Booted the VM from the Windows Server 2025 installation file.
+2. Selected the appropriate language settings.
+3. Selected "Install Windows Server".
+4. Selected the Windows Server 2025 Standard (Desktop Experience) installation option.
+5. Accepted the Microsoft Software License Terms.
+6. Selected the virtual disk as the installation destination.
+7. Completed the Windows installation.
+8. Created the initial local administrator account.
+9. Logged into Windows Server for the first time.
 
 ### Screenshot
 
-![Windows Server Installation](screenshots/03-windows-installation.png)
+![Windows Server Installation](screenshots/02-windows-server-2025-home-screen.png)
 
 ---
 
