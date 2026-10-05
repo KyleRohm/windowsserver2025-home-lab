@@ -72,3 +72,46 @@ The following settings were configured:
 ![Static IP Configuration](screenshots/08-static-ip-config.png)
 
 ---
+
+## Install Active Directory Domain Services
+
+The Active Directory Domain Services (AD DS) role was installed using Server Manager.
+
+### Configuration Steps
+
+1. Opened **Server Manager**.
+2. Selected **Manage → Add Roles and Features**.
+3. Selected `Role-based or feature-based installation`.
+4. Selected `FileServer01`.
+5. Selected `Active Directory Domain Services` → `Add Features`.
+6. Clicked `Next` → `Install`.
+8. Waited for the installation to complete → Completed
+
+---
+
+## Promote the Server to a Domain Controller
+
+After installing the Active Directory Domain Services role, the server was promoted to a Domain Controller.
+
+### Configuration Steps
+1. Opened Server Manager.
+2. Selected the notification flag in the upper-right corner.
+3. Selected Promote this server to a domain controller.
+4. Selected Add a new forest.
+5. Entered the root domain name:
+<YOUR-DOMAIN>
+6. Confirmed that Domain Name System (DNS) server was selected.
+7. Entered and confirmed the Directory Services Restore Mode (DSRM) password.
+8. Reviewed the DNS delegation options.
+9. Reviewed the database, log files, and SYSVOL locations.
+10. Clicked Next through the remaining configuration screens.
+11. Allowed the prerequisite check to complete.
+12. Clicked Install after the prerequisite check completed successfully.
+13. The server restarted automatically after the promotion completed.
+
+### Verify Installation
+
+The installation was verified using PowerShell:
+
+```powershell
+Get-WindowsFeature AD-Domain-Services
