@@ -75,10 +75,10 @@ The Active Directory Domain Services (AD DS) role was installed using Server Man
 
 1. Opened **Server Manager**.
 2. Selected **Manage → Add Roles and Features**.
-3. Selected `Role-based or feature-based installation`.
-4. Selected `FileServer01`.
-5. Selected `Active Directory Domain Services` → `Add Features`.
-6. Clicked `Next` → `Install`.
+3. Selected **Role-based or feature-based installation**.
+4. Selected **FileServer01**.
+5. Selected **Active Directory Domain Services** → **Add Features**.
+6. Clicked **Next** → **Install**.
 8. Waited for the installation to complete → Completed
 
 ---
