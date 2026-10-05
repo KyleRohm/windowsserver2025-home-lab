@@ -17,12 +17,6 @@ Active Directory will provide centralized authentication and management of users
 - Install the Active Directory Domain Services role
 - Promote the server to a Domain Controller
 - Create a new Active Directory forest and domain
-- Verify Active Directory functionality
-- Create Organizational Units
-- Create test user accounts
-- Create security groups
-- Configure group membership
-- Verify domain authentication
 
 ---
 
@@ -119,5 +113,24 @@ Verified using PowerShell:
 Get-WindowsFeature AD-Domain-Services
 ```
 ![Successful Install](screenshots/10-AD-DS-success.png)
+
+Control Panel → System and Security → Windows Tools
+
+Confirmed successful installation of:
+
+- Active Directory Users and Computers
+- Group Policy Management
+- Remote Desktop Connection
+
+![Windows Tools](screenshots/11-windows-tools.png)
+
+
+> To be continued:
+> - Verify Active Directory functionality
+> - Create Organizational Units
+> - Create test user accounts
+> - Create security groups
+> - Configure group membership
+> - Verify domain authentication
 
 ---
