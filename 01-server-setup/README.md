@@ -4,9 +4,9 @@
 
 ## Overview
 
-This project documents the installation and initial configuration of a Windows Server 2025 virtual machine using VMware Workstation.
+This section documents the installation and initial configuration of a Windows Server 2025 virtual machine using VMware Workstation.
 
-This server will serve as the foundation for the home lab and will eventually be configured as a Domain Controller and File Server.
+This server will serve as the foundation for the home lab and will be configured as a Domain Controller and File Server.
 
 ## Objectives
 
@@ -16,7 +16,7 @@ This server will serve as the foundation for the home lab and will eventually be
 - Install VMware Tools
 - Configure the server hostname and timezone
 - Enable Remote Management
-- Apply Windows Updates
+- Install Windows Updates
 
 ---
 
@@ -33,14 +33,6 @@ This server will serve as the foundation for the home lab and will eventually be
 |---|---|
 | Hypervisor | VMware Workstation |
 | Operating System | Windows Server 2025 |
-| Edition | Standard |
-| Installation Type | Desktop Experience |
-| Number of processors | 2 |
-| Number of cores per processor | 2 |
-| Memory | 4 GB |
-| Storage | 60 GB |
-| Network Adapter | NAT |
-| Server Name | Windows Server 2025 |
 
 ---
 
@@ -50,9 +42,8 @@ A new virtual machine was created in VMware Workstation.
 
 ### VM Configuration
 
-- Virtual machine name: `Windows Server 2025`
-- Guest operating system: `Microsoft Windows`
-- Version: `Windows Server 2025`
+- Operating system: `Windows Server 2025`
+- Hostname: `Windows Server 2025`
 - Number of processors: `2`
 - Number of cores per processor: `2`
 - Memory: `4 GB`
@@ -65,19 +56,18 @@ A new virtual machine was created in VMware Workstation.
 
 ## 2. Install Windows Server 2025
 
-The Windows Server 2025 installation media was mounted to the
-virtual machine and the operating system installation was completed.
+The .iso was mounted to the virtual machine and the operating system installation was completed.
 
 ### Installation Steps
 
 1. Booted the VM from the Windows Server 2025 installation file.
-2. Selected the appropriate language settings.
+2. Selected `English`.
 3. Selected `Install Windows Server`.
 4. Selected the `Windows Server 2025 Standard (Desktop Experience)` installation option.
 5. Accepted the Microsoft Software License Terms.
-6. Selected the virtual disk as the installation destination.
+6. Selected the virtual disk (.iso) as the installation destination.
 7. Completed the Windows installation.
-8. Created the initial local administrator account.
+8. Created the initial local administrator password.
 9. Logged into Windows Server for the first time.
 
 ![Windows Server Installation](screenshots/02-windows-server-2025-home-screen.png)
@@ -91,14 +81,14 @@ After installation, the server was configured with basic settings required for t
 ### VMware Tools Installation
 
 - VM → Install VMware Tools
-- Installed VMware Tools to enable graphics acceleration and mouse integration.
+- Installed VMware Tools for better performance.
 
-Ran VMware installation wizard from the (D:) drive:
+Ran the installation wizard from the (D:) drive:
 ![VMware Tools Install](screenshots/03-vmware-tools-installation.png)
 
 ### Hostname Configuration
 
-- Run → sysdm.cpl → Computer Name → Change...
+- Run → `sysdm.cpl` → Computer Name → Change...
 - Configured the hostname to `FileServer01`.
 
 ![Hostname Change](screenshots/04-server-hostname-change.png)
@@ -120,7 +110,7 @@ Changed Remote management to `Enabled`.
 ### Install Windows Updates
 
 - Settings → Windows Update
-- Ran Windows Update to ensure system is up-to-date.
+- Ran Windows Update to ensure system is stable and current.
 
 ![Install Windows Updates](screenshots/07-windows-updates.png)
 
