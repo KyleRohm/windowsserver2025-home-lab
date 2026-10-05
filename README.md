@@ -44,7 +44,7 @@ along the way.
 | Directory Services | Active Directory Domain Services |
 | DNS | Windows Server DNS |
 | File Services | Windows Server File Server |
-| Virtual Networking | VMware virtual networking |
+| Virtual Networking | NAT |
 
 ### Virtual Machines
 
