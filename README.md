@@ -87,3 +87,9 @@ to communicate with each other and access the network.
 This repository documents the setup and configuration of a Windows Server 2025 virtual machine in VMware Workstation.
 
 [Read the full guide](01-server-setup/README.md).
+
+## 02 Active Directory Domain Services
+
+This repository documents the setup and configuration of Active Directory Domain Services within Windows Server 2025.
+
+[Read the full guide](02-active-directory-domain-services/README.md).
