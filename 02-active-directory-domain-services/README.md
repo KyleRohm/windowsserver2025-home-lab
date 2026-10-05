@@ -109,9 +109,15 @@ After installing the Active Directory Domain Services role, the server was promo
 
 ### Verify Installation
 
-Upon reboot, the domain was displayed on the login screen and verified using PowerShell:
+The domain was displayed on the login screen upon reboot:
 
+![Login Screen](screenshots/09-active-directory-domain-services-success.png)
 
+Verified using PowerShell:
 
 ```powershell
 Get-WindowsFeature AD-Domain-Services
+```
+![Successful Install](screenshots/10-AD-DS-success.png)
+
+---
