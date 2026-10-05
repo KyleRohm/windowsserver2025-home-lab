@@ -74,7 +74,7 @@ The Active Directory Domain Services (AD DS) role was installed using Server Man
 ### Configuration Steps
 
 1. Opened **Server Manager**.
-2. Selected **Manage → Add Roles and Features**.
+2. Selected **Manage** → **Add Roles and Features**.
 3. Selected **Role-based or feature-based installation**.
 4. Selected **FileServer01**.
 5. Selected **Active Directory Domain Services** → **Add Features**.
@@ -89,13 +89,13 @@ After installing the Active Directory Domain Services role, the server was promo
 
 ### Configuration Steps
 
-1. Selected `Promote this server to a domain controller`.
-2. Selected `Add a new forest`.
+1. Selected **Promote this server to a domain controller**.
+2. Selected **Add a new forest**.
 3. Entered the root domain name: `homelab.local`
 4. Confirmed that **Windows Server 2025** was selected.
 5. Entered and confirmed the Directory Services Restore Mode (DSRM) password.
 6. Left the DNS delegation options unselected.
-7. Verified the NetBIOS domain as `HOMELAB`.
+7. Verified the NetBIOS domain as **HOMELAB**.
 8. Kept the default AD DS database, log files, and SYSVOL folder locations.
 9. Allowed the prerequisite check to complete.
 10. Clicked Install after the prerequisite check completed successfully.
