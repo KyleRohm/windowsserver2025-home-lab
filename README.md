@@ -60,12 +60,12 @@ along the way.
 
 ## Network Architecture
 
-The lab uses VMware virtual networking to allow the virtual machines
+The lab uses Network Address Translation (NAT) to allow the virtual machines
 to communicate with each other and access the network.
 
 ### Planned Architecture
 
-```text
+
                     Home Network
                          │
                     VMware Network
