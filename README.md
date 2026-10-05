@@ -70,13 +70,13 @@ to communicate with each other and access the network.
                          │
                     VMware Network
                          │
-              ┌──────────┴──────────┐
-              │                     │
-        FileServer01             Client01
-     Windows Server 2025          Windows 11
-              │                     │
-              │                     │
-       Active Directory ◄───────────┘
+              ┌──────────┴─────────┐
+              │                    │
+        FileServer01            Client01
+     Windows Server 2025       Windows 11
+              │                    │
+              │                    │
+       Active Directory ◄──────────┘
               │
              DNS
               │
