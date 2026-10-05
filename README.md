@@ -2,16 +2,11 @@
 
 ## Overview
 
-This project documents the design, deployment, configuration, and
-administration of a Windows Server 2025 home lab running in VMware
-Workstation.
+This project documents the design, deployment, configuration, and administration of a Windows Server 2025 home lab running in VMware Workstation.
 
-The goal of this lab is to develop hands-on experience with Windows
-Server administration, Active Directory, DNS, domain management,
-file-server configuration, permissions, and troubleshooting.
+The goal of this lab is to develop hands-on experience with Windows Server administration, Active Directory, DNS, domain management, file-server configuration, permissions, and troubleshooting.
 
-The lab is being built incrementally, with each phase documented
-along the way.
+The lab is being built incrementally, with each phase documented along the way.
 
 ---
 
@@ -28,8 +23,7 @@ along the way.
 - Configure shared folders
 - Implement NTFS and share permissions
 - Test access using different user accounts and security groups
-- Troubleshoot common Windows networking, authentication, and
-  permissions issues
+- Troubleshoot common Windows networking, authentication, and permissions issues
 - Document the configuration and troubleshooting process
 
 ---
@@ -53,15 +47,13 @@ along the way.
 | FileServer01 | Windows Server 2025 | Server / File Server | 🟢 In Progress |
 | Client01 | Windows 11 | Domain-Joined Client | ⚪ Planned |
 
-> **Note:** The lab environment will be expanded as additional
-> services and client systems are added.
+> **Note:** The lab environment will be expanded as additional services and client systems are added.
 
 ---
 
 ## Network Architecture
 
-The lab uses Network Address Translation (NAT) to allow the virtual machines
-to communicate with each other and access the network.
+The lab uses Network Address Translation (NAT) to allow the virtual machines to communicate with each other and access the network.
 
 ### Planned Architecture
 
