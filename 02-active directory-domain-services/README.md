@@ -88,4 +88,4 @@ The following network settings were configured:
 
 ### Verification
 
-![Static IP Configuration]
+![Static IP Configuration](screenshots/08-static-ip-config.png)
