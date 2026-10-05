@@ -4,14 +4,11 @@
 
 ## Overview
 
-This project documents the installation and configuration of Active
-Directory Domain Services (AD DS) on Windows Server 2025.
+This project documents the installation and configuration of Active Directory Domain Services (AD DS) on Windows Server 2025.
 
-The Windows Server 2025 virtual machine created during the previous
-phase of the home lab will be configured as a Domain Controller.
+The Windows Server 2025 virtual machine created during the previous phase of the home lab will be configured as a Domain Controller.
 
-Active Directory will provide centralized authentication and management
-of users, computers, and security groups within the lab environment.
+Active Directory will provide centralized authentication and management of users, computers, and security groups within the lab environment.
 
 ## Objectives
 
@@ -36,7 +33,6 @@ of users, computers, and security groups within the lab environment.
 - VMware Workstation installed
 - Server hostname configured
 - Network connectivity verified
-- Static IP address configured
 - Administrative access to the Windows Server
 - Windows Server 2025 configured with the appropriate DNS settings
 
@@ -60,32 +56,26 @@ of users, computers, and security groups within the lab environment.
 
 ---
 
-# 1. Configure Network Settings
+## Configure Network Settings
 
-Before installing Active Directory Domain Services, the Windows Server
-was configured with a static IP address.
+Before installing Active Directory Domain Services, the Windows Server was configured with a static IP address.
 
-Active Directory and DNS require reliable network configuration so that
-domain clients can consistently locate the Domain Controller.
+The following settings were configured:
 
-### Network Configuration
-
-The following network settings were configured:
-
-- IP Address: `192.168.88.129`
-- Subnet Mask: `255.255.255.0`
-- Default Gateway: `192.168.88.2`
-- Preferred DNS: `127.0.0.1`
+- IP Address
+- Subnet Mask
+- Default Gateway
+- Preferred DNS
 
 ### Configuration Steps
 
-1. Opened **Windows PowerShell → Typed `ipconfig` → Copied the IPv4 Address automatically assigned by DHCP**.
+1. Opened **Windows PowerShell** → Typed `ipconfig` → **Copied the IPv4 Address** automatically assigned by DHCP (`192.168.88.129`).
 2. Opened **Settings → Network & internet → Ethernet**.
 3. Clicked `Edit` for IP assignnemt.
 4. Set configuration to `Manual` and pasted the IP address.
-5. Configured the subnet mask.
-6. Configured the default gateway.
-7. Configured the DNS to the loopback address.
+5. Configured the **subnet mask** to `255.255.255.0`
+6. Configured the **default gateway** to `192.168.88.2`
+7. Configured the **DNS** to the loopback address.
 8. Saved the network configuration.
 
 ![Static IP Configuration](screenshots/08-static-ip-config.png)
