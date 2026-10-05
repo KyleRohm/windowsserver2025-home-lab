@@ -81,3 +81,9 @@ to communicate with each other and access the network.
              DNS
               │
         File Services
+
+## 01 Windows Server 2025 VM Deployment
+
+This repository documents the setup and configuration of a Windows Server 2025 virtual machine in VMware Workstation.
+
+[Read the full guide](01-server-setup/README.md).
