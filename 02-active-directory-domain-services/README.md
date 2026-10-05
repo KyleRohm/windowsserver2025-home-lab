@@ -97,7 +97,7 @@ After installing the Active Directory Domain Services role, the server was promo
 6. Left the DNS delegation options unselected.
 7. Verified the NetBIOS domain as **HOMELAB**.
 8. Kept the default AD DS database, log files, and SYSVOL folder locations.
-9. Clicked Install after the prerequisite check completed successfully.
+9. Clicked **Install** after the prerequisite check completed successfully.
 10. The server restarted automatically after the promotion completed.
 
 ### Verify Installation
