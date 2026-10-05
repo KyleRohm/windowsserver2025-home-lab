@@ -88,6 +88,6 @@ The following network settings were configured:
 7. Configured the DNS to the loopback address.
 8. Saved the network configuration.
 
-### Verification
-
 ![Static IP Configuration](screenshots/08-static-ip-config.png)
+
+---
