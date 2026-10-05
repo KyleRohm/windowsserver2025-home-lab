@@ -94,24 +94,24 @@ The Active Directory Domain Services (AD DS) role was installed using Server Man
 After installing the Active Directory Domain Services role, the server was promoted to a Domain Controller.
 
 ### Configuration Steps
-1. Opened Server Manager.
-2. Selected the notification flag in the upper-right corner.
-3. Selected Promote this server to a domain controller.
-4. Selected Add a new forest.
-5. Entered the root domain name:
-<YOUR-DOMAIN>
-6. Confirmed that Domain Name System (DNS) server was selected.
-7. Entered and confirmed the Directory Services Restore Mode (DSRM) password.
-8. Reviewed the DNS delegation options.
-9. Reviewed the database, log files, and SYSVOL locations.
-10. Clicked Next through the remaining configuration screens.
-11. Allowed the prerequisite check to complete.
-12. Clicked Install after the prerequisite check completed successfully.
-13. The server restarted automatically after the promotion completed.
+
+1. Selected `Promote this server to a domain controller`.
+2. Selected `Add a new forest`.
+3. Entered the root domain name: `homelab.local`
+4. Confirmed that **Windows Server 2025** was selected.
+5. Entered and confirmed the Directory Services Restore Mode (DSRM) password.
+6. Left the DNS delegation options unselected.
+7. Verified the NetBIOS domain as `HOMELAB`.
+8. Kept the default AD DS database, log files, and SYSVOL folder locations.
+9. Allowed the prerequisite check to complete.
+10. Clicked Install after the prerequisite check completed successfully.
+11. The server restarted automatically after the promotion completed.
 
 ### Verify Installation
 
-The installation was verified using PowerShell:
+Upon reboot, the domain was displayed on the login screen and verified using PowerShell:
+
+
 
 ```powershell
 Get-WindowsFeature AD-Domain-Services
