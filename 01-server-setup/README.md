@@ -1,4 +1,4 @@
-[← Back to Main README](../../README.md)
+[← Back to Main README](../README.md)
 
 # Windows Server 2025 VM Deployment
 
