@@ -4,19 +4,19 @@
 
 ## Overview
 
-This project documents the installation and configuration of Active Directory Domain Services (AD DS) on Windows Server 2025.
+This section documents the installation and configuration of Active Directory Domain Services (AD DS).
 
-The Windows Server 2025 virtual machine created during the previous phase of the home lab will be configured as a Domain Controller.
+The Windows Server 2025 virtual machine created during the previous section of the home lab will be configured as a Domain Controller.
 
 Active Directory will provide centralized authentication and management of users, computers, and security groups within the lab environment.
 
 ## Objectives
 
 - Configure the Windows Server 2025 server for Active Directory
+- Configure the network settings as part of the Active Directory deployment
 - Install the Active Directory Domain Services role
 - Promote the server to a Domain Controller
 - Create a new Active Directory forest and domain
-- Configure DNS as part of the Active Directory deployment
 - Verify Active Directory functionality
 - Create Organizational Units
 - Create test user accounts
@@ -28,13 +28,10 @@ Active Directory will provide centralized authentication and management of users
 
 ## Prerequisites
 
-- Windows Server 2025 installed
-- Windows Server 2025 configured and updated
-- VMware Workstation installed
-- Server hostname configured
-- Network connectivity verified
 - Administrative access to the Windows Server
-- Windows Server 2025 configured with the appropriate DNS settings
+- Server hostname configured
+- Windows Server 2025 updated
+- Network connectivity verified
 
 ---
 
@@ -47,12 +44,6 @@ Active Directory will provide centralized authentication and management of users
 | Edition | Standard |
 | Installation Type | Desktop Experience |
 | Server Name | FileServer01 |
-| Active Directory Role | Domain Controller |
-| Domain Name | `homelab.local` |
-| IP Address | `192.168.88.129` |
-| Subnet Mask | `255.255.255.0` |
-| Default Gateway | `192.168.88.2` |
-| Preferred DNS | `127.0.0.1` |
 
 ---
 
