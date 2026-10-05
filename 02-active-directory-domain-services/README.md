@@ -125,7 +125,6 @@ Confirmed successful installation of:
 
 
 > To be continued:
-> - Verify Active Directory functionality
 > - Create Organizational Units
 > - Create test user accounts
 > - Create security groups
