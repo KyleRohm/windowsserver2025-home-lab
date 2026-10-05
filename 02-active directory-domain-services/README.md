@@ -50,11 +50,11 @@ of users, computers, and security groups within the lab environment.
 | Installation Type | Desktop Experience |
 | Server Name | FileServer01 |
 | Active Directory Role | Domain Controller |
-| Domain Name | `[YOUR-DOMAIN]` |
-| IP Address | `[YOUR-IP]` |
-| Subnet Mask | `[YOUR-SUBNET]` |
-| Default Gateway | `[YOUR-GATEWAY]` |
-| Preferred DNS | `[YOUR-DNS]` |
+| Domain Name | `homelab.local` |
+| IP Address | `192.168.88.129` |
+| Subnet Mask | `255.255.255.0` |
+| Default Gateway | `192.168.88.2` |
+| Preferred DNS | `127.0.0.1` |
 
 ---
 
@@ -70,25 +70,22 @@ domain clients can consistently locate the Domain Controller.
 
 The following network settings were configured:
 
-- IP Address: `[YOUR-IP]`
-- Subnet Mask: `[YOUR-SUBNET]`
-- Default Gateway: `[YOUR-GATEWAY]`
-- Preferred DNS Server: `[YOUR-DNS]`
+- IP Address: `192.168.88.129`
+- Subnet Mask: `255.255.255.0`
+- Default Gateway: `192.168.88.2`
+- Preferred DNS: `127.0.0.1`
 
 ### Configuration Steps
 
-1. Opened **Settings → Network & Internet**.
-2. Opened the network adapter properties.
-3. Opened the IPv4 configuration.
-4. Configured the server with a static IP address.
+1. Opened **Windows PowerShell → Typed `ipconfig` → Copied the IPv4 Address automatically assigned by DHCP**.
+2. Opened **Settings → Network & internet → Ethernet**.
+3. Clicked `Edit` for IP assignnemt.
+4. Set configuration to `Manual` and pasted the IP address.
 5. Configured the subnet mask.
 6. Configured the default gateway.
-7. Configured the appropriate DNS server.
+7. Configured the DNS to the loopback address.
 8. Saved the network configuration.
 
 ### Verification
 
-The network configuration was verified using:
-
-```powershell
-ipconfig /all
+![Static IP Configuration]
