@@ -42,9 +42,9 @@ A Windows 11 virtual machine was then deployed and configured as a domain-joined
 
 ## Create Organizational Units
 
-A `TX` Organizational Unit was created to organize the users and computers within the lab environment.
+A corporate OU structure with departments was created to organize the users and computers within the lab environment.
 
-The following Organizational Unit structure was created:
+The following structure was created:
 
 ```text
 <homelab.local>
