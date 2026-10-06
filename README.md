@@ -85,3 +85,9 @@ This repository documents the setup and configuration of a Windows Server 2025 v
 This repository documents the setup and configuration of Active Directory Domain Services within Windows Server 2025.
 
 [Read the full guide](02-active-directory-domain-services/README.md).
+
+## 03 Active Directory Users and Client
+
+This repository documents the setup of an Organizational Unit structure within Active Directory and deployment of a Windows 11 client.
+
+[Read the full guide](03-active-directory-users-and-client/README.md).
