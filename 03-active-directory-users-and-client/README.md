@@ -4,9 +4,9 @@
 
 ## Overview
 
-After configuring the Windows Server 2025 Domain Controller, the Active Directory environment was populated with Organizational Units, user accounts, and security groups.
+This section documents the creation of Organizational Units (OUs) and user accounts in the Active Directory environment.
 
-A Windows 11 virtual machine was then configured as a domain-joined client and added to the appropriate Organizational Unit.
+A Windows 11 virtual machine was then deployed and configured as a domain-joined client.
 
 ## Objectives
 
@@ -29,11 +29,24 @@ A Windows 11 virtual machine was then configured as a domain-joined client and a
 
 ## Prerequisites
 
-- lipsum orem
+- Windows Server 2025 configured as a Domain Controller
+- Active Directory Domain Services installed
+- IP and DNS settings configured
+- DNS configured and operational
 
 ---
 
 ## Lab Environment
+
+| Component | Configuration |
+|---|---|
+| Hypervisor | VMware Workstation |
+| Operating System | Windows Server 2025 |
+| Domain Controller | FileServer01 |
+| Active Directory Domain | homelab.local |
+| DNS Server | 192.168.88.129 |
+
+---
 
 ## Create Organizational Units
 
@@ -42,7 +55,7 @@ A `TX` Organizational Unit was created to organize the users and computers withi
 The following Organizational Unit structure was created:
 
 ```text
-<YOUR-DOMAIN>
+<homelab.local>
 │
 └── TX
     │
