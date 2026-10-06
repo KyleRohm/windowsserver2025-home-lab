@@ -11,19 +11,11 @@ A Windows 11 virtual machine was then deployed and configured as a domain-joined
 ## Objectives
 
 - Create an Organizational Unit structure
-- Create HR, IT, and Sales Organizational Units
-- Create test user accounts
-- Configure user accounts for their respective departments
+- Add HR, IT, and Sales folders with user accounts
 - Create and configure a Windows 11 client virtual machine
-- Install VMware Tools
-- Install Windows updates
-- Configure the Windows 11 client with the Domain Controller as its DNS server
-- Verify network connectivity between the Windows 11 client and Domain Controller
 - Join the Windows 11 client to the Active Directory domain
-- Verify domain authentication
-- Configure security group membership
-- Move the Windows 11 computer account to the appropriate Organizational Unit
-- Add a description to the computer account
+- Verify network connectivity between the Windows 11 client and Domain Controller
+- Follow best practices for domain-joined clients
 
 ---
 
