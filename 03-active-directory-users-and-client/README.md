@@ -121,7 +121,7 @@ Create a Windows 11 virtual machine to serve as the client computer for the Acti
 5. Named the device: `Computer01`
 6. **Setup for work or school** → **Sign-in options** → **Domain join instead**
 7. Named the profile: `Kyle Rohm` → Setup a password and security questions.
-8. Completed final installation steps and booted into Windows 11 for the first time.
+8. Completed final installation steps, booted into Windows 11 and installed VMware Tools.
 
 ![Windows 11 Desktop](screenshots/16-windows11-desktop.PNG)
 
