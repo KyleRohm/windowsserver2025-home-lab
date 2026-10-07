@@ -25,6 +25,7 @@ A Windows 11 virtual machine was then deployed and configured as a domain-joined
 - Active Directory Domain Services installed
 - IP and DNS settings configured
 - DNS configured and operational
+- Downloaded copy of Windows 11 Client installation media
 
 ---
 
@@ -83,24 +84,46 @@ Applied the **Domain Admins** security group to the IT user account.
 1. Double-clicked `Kyle Rohm` and selected **New → User**.
 2. Clicked **Member Of** → **Add**
 3. Typed `Domain Admins` into the text field → **Check Names** → **OK**
-4. Applied changes
+4. Applied changes.
 
 ![IT Domain Administrator](screenshots/14-domain-admin-security-group.png)
 
+> This security group will be used later to join the Windows 11 client to the domain.
+
 ---
 
-## Create and Configure Windows 11 Client
+## VM Configuration
+
+Create a Windows 11 virtual machine in VMware.
+
+1. **VMware** → **Create a New Virtual Machine**
+2. Went through the VM Wizard and entered a **TPM** password.
+3. Set number of processors to **2** and cores per processor to **1**.
+4. Memory: **4 GB** → Network Type: **NAT** → I/O controller: **LSI Logic SAS**
+5. Virtual disk: **NVMe** → Selected **Create a new virtual disk** → Disk size: **80 GB**
+6. Clicked **Customize Hardware** → **New CD/DVD (SATA)** and selected the saved Win 11 .iso.
+
+![Windows 11 Client](screenshots/15-windows-11-client-hardware.png)
+
+---
+
+## 2. Install Windows 11
 
 Create a Windows 11 virtual machine to serve as the client computer for the Active Directory domain.
 
-1. Open **VMware Workstation**.
-2. Select **Create a New Virtual Machine**.
-3. Install Windows 11 using the appropriate installation media.
-4. Configure the virtual machine to use the same VMware network as `FileServer01`.
-5. Complete the Windows 11 installation.
-6. Configure the computer name as `Computer01`.
+### Installation Steps
 
-![Windows 11 Client](screenshots/13-windows-11-client.png)
+1. Powered on the configured Windows 11 VM.
+2. Selected **English** → **Install Windows 11**.
+3. Selected the **I don't have a product key** option.
+4. Selected the **Windows 11 Pro** image.
+> Note: Only *Windows 11 Pro* and *Windows 11 Enterprise* versions can be joined to an Active Directory domain.
+5. Named the device: `Computer01`
+6. **Setup for work or school** → **Sign-in options** → **Domain join instead**
+7. Named the profile: `Kyle Rohm` → Setup a password and security questions.
+8. Completed final installation steps and booted into Windows 11 for the first time.
+
+![Windows 11 Desktop](screenshots/16-windows11-desktop.PNG)
 
 ---
 
