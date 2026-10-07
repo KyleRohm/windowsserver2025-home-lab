@@ -56,3 +56,20 @@ The following structure was created:
     ├── IT
     │
     └── Sales
+```
+---
+
+### Configuration Steps
+
+- Opened **Server Manager** → **Tools** → **Active Directory Users and Computers**.
+- Right-clicked the Active Directory domain.
+- Selected **New** → **Organizational Unit**.
+- Created Organizational Unit `TX`.
+- Right-clicked the `TX` OU.
+- Selected **New** → **Organizational Unit**.
+- Created an OU named `HR`.
+- Repeated the process to create `IT` and `Sales`.
+
+![User Creation](screenshots/12-organizational-structure-creation.PNG)
+
+---
