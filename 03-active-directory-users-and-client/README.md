@@ -63,7 +63,7 @@ A corporate OU structure with departments was created to organize the users and 
 
 Created three user accounts and place each in the appropriate OU.
 
-### HR User
+### Account Creation Steps
 
 1. Opened **Server Manager**.
 2. Selected **Tools → **Active Directory Users and Computers**.
@@ -72,36 +72,20 @@ Created three user accounts and place each in the appropriate OU.
 6. Entered the user's information.
 7. Configured a username and password.
 8. Selected **Finish**.
-9. Repeated the process to create a user account in `IT` and `Sales`.
+9. Repeated the process to create user accounts in `IT` and `Sales`.
 
 ![User Accounts](screenshots/13-user-creation.png)
 
-### Sales User
+### Assign Domain Admin Group
 
-Create a standard user account in the `Sales` OU.
+Applied the **Domain Admins** security group to the IT user account.
 
-1. Navigate to `TX → Sales`.
-2. Right-click the `Sales` OU and select **New → User**.
-3. Enter the user's information.
-4. Configure a username and password.
-5. Select **Finish**.
+1. Double-clicked `Kyle Rohm` and selected **New → User**.
+2. Clicked **Member Of** → **Add**
+3. Typed `Domain Admins` into the text field → **Check Names** → **OK**
+4. Applied changes
 
-![Sales User Account](screenshots/11-sales-user.png)
-
-### IT Domain Administrator
-
-Create an administrative user account in the `IT` OU.
-
-1. Navigate to `TX → IT`.
-2. Right-click the `IT` OU and select **New → User**.
-3. Enter the administrator's information.
-4. Configure a username and password.
-5. Select **Finish**.
-6. Add the account to the **Domain Admins** security group.
-
-> **Security Note:** Do not document or commit passwords, recovery codes, or other authentication credentials to GitHub.
-
-![IT Domain Administrator](screenshots/12-it-admin.png)
+![IT Domain Administrator](screenshots/14-domain-admin-security-group.png)
 
 ---
 
