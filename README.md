@@ -42,10 +42,10 @@ The lab is being built incrementally, with each phase documented along the way.
 
 ### Virtual Machines
 
-| VM | Operating System | Role | Status |
+| Device Name | Operating System | Role | Status |
 |---|---|---|---|
-| FileServer01 | Windows Server 2025 | Server / File Server | 🟢 In Progress |
-| Client01 | Windows 11 | Domain-Joined Client | ⚪ Planned |
+| FileServer01 | Windows Server 2025 | Domain Server / File Server | 🟢 In Progress |
+| Computer01 | Windows 11 Pro | Domain-Joined Client | ✔️ Completed |
 
 > **Note:** The lab environment will be expanded as additional services and client systems are added.
 
