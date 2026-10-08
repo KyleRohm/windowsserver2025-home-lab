@@ -75,7 +75,7 @@ Created three user accounts and place each in the appropriate OU.
 8. Selected **Finish**.
 9. Repeated the process to create user accounts in `IT` and `Sales`.
 
-![User Accounts](screenshots/13-user-creation.png)
+![User Accounts](screenshots/3accounts.png)
 
 ### Assign Domain Admin Group
 
