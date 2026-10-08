@@ -94,7 +94,7 @@ Applied the **Domain Admins** security group to the IT user account.
 
 ## VM Configuration
 
-Create a Windows 11 virtual machine in VMware.
+Created a Windows 11 virtual machine in VMware.
 
 1. **VMware** → **Create a New Virtual Machine**
 2. Went through the VM Wizard and entered a **TPM** password.
@@ -107,9 +107,9 @@ Create a Windows 11 virtual machine in VMware.
 
 ---
 
-## 2. Install Windows 11
+## Install Windows 11
 
-Create a Windows 11 virtual machine to serve as the client computer for the Active Directory domain.
+Created a Windows 11 virtual machine to serve as the client computer for the Active Directory domain.
 
 ### Installation Steps
 
@@ -125,81 +125,47 @@ Create a Windows 11 virtual machine to serve as the client computer for the Acti
 
 ![Windows 11 Desktop](screenshots/16-windows11-desktop.PNG)
 
----
+> Verified client hostname:
 
-## Install VMware Tools
-
-Install VMware Tools on the Windows 11 client to improve virtual machine integration and performance.
-
-1. Start `Computer01`.
-2. In VMware Workstation, select **VM → Install VMware Tools**.
-3. Open the VMware Tools installer inside Windows 11.
-4. Follow the installation wizard using the default options.
-5. Restart `Computer01` when prompted.
-
-![VMware Tools](screenshots/14-vmware-tools.png)
-
----
-
-## Run Windows Updates
-
-Bring the Windows 11 client up to date before joining it to the Active Directory domain.
-
-1. Open **Settings**.
-2. Select **Windows Update**.
-3. Select **Check for updates**.
-4. Install all available updates.
-5. Restart the computer when required.
-6. Repeat the process until Windows Update reports that the system is up to date.
-
-![Windows Update](screenshots/15-windows-update.png)
+![Windows 11 Hostname](screenshots/17-windows11-hostname.png)
 
 ---
 
 ## Configure Manual DNS Settings
 
-Configure the Windows 11 client to use `FileServer01` as its DNS server.
+Configured the Windows 11 client to use `FileServer01` as its DNS server.
 
-1. Open **Settings**.
-2. Select **Network & internet**.
-3. Select the active network connection.
-4. Select **Edit** next to **DNS server assignment**.
-5. Change the setting to **Manual**.
-6. Enable **IPv4**.
-7. Enter the IP address of `FileServer01` as the preferred DNS server.
-8. Save the configuration.
+1. Opened **Settings**.
+2. Selected **Network & internet** → **Ethernet**
+3. Selected **Edit** next to **DNS server assignment**.
+4. Changed the setting to **Manual** and enabled **IPv4**.
+5. Entered `192.168.88.129` as the Preferred DNS server IP address and saved the configuration.
 
-Verify the DNS configuration using Command Prompt:
-
-```powershell
-ipconfig /all
-````
-
-Confirm that the DNS server listed for the Windows 11 client is the IP address of `FileServer01`.
-
-![Windows 11 DNS Configuration](screenshots/16-windows-11-dns.png)
+![Windows 11 DNS Configuration](screenshots/18-windows11-DNS.png)
 
 ---
 
-## Test Network Connectivity
+### Test Network Connectivity
 
-Verify that the Windows 11 client can communicate with the Domain Controller.
-
-Open Command Prompt on `Computer01` and run:
+Verified that the client can communicate with the Domain Controller:
 
 ```powershell
-ping <FILESERVER01-IP-ADDRESS>
+ping 192.168.88.129
 ```
+![Ping FileServer01](screenshots/19-windows11-DNS-verification.png)
 
-A successful response should resemble:
+---
 
-```text
-Reply from <FILESERVER01-IP-ADDRESS>: bytes=32 time<1ms TTL=128
-```
+## Run Windows Updates
 
-Successful replies confirm that the Windows 11 client can communicate with `FileServer01` over the network.
+Brought the Windows 11 client up-to-date before joining it to the Active Directory domain.
 
-![Ping FileServer01](screenshots/17-ping-file-server.png)
+1. **Settings** → **Windows Update**
+4. Installed all available updates.
+5. Restarted the computer when required.
+6. Repeated the process until updates were completed.
+
+![Windows Update](screenshots/20-win-11-updates.PNG)
 
 ---
 
