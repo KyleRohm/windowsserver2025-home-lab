@@ -44,8 +44,9 @@ The lab is being built incrementally, with each phase documented along the way.
 
 | Device Name | Operating System | Role | Status |
 |---|---|---|---|
-| FileServer01 | Windows Server 2025 | Domain Server / File Server | 🟢 In Progress |
+| FileServer01 | Windows Server 2025 | Domain Server | ✔️ Completed |
 | Computer01 | Windows 11 Pro | Domain-Joined Client | ✔️ Completed |
+| FileServer01 | Windows Server 2025 | File Server | ⚪ Planned |
 
 > **Note:** The lab environment will be expanded as additional services and client systems are added.
 
