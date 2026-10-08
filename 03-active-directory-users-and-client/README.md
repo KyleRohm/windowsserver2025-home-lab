@@ -68,12 +68,12 @@ Created three user accounts and place each in the appropriate OU.
 
 1. Opened **Server Manager**.
 2. Selected **Tools → **Active Directory Users and Computers**.
-4. Navigated to `TX → HR`.
-5. Right-clicked `HR` and selected **New** → **User**.
-6. Entered the user's information.
-7. Configured a username and password.
-8. Selected **Finish**.
-9. Repeated the process to create user accounts in `IT` and `Sales`.
+3. Navigated to `TX → HR`.
+4. Right-clicked `HR` and selected **New** → **User**.
+5. Entered the user's information.
+6. Configured a username and password.
+7. Selected **Finish**.
+8. Repeated the process to create user accounts in `IT` and `Sales`.
 
 ![User Accounts](screenshots/3accounts.png)
 
@@ -161,9 +161,9 @@ ping 192.168.88.129
 Brought the Windows 11 client up-to-date before joining it to the Active Directory domain.
 
 1. **Settings** → **Windows Update**
-4. Installed all available updates.
-5. Restarted the computer when required.
-6. Repeated the process until updates were completed.
+2. Installed all available updates.
+3. Restarted the computer when required.
+4. Repeated the process until updates were completed.
 
 ![Windows Update](screenshots/20-win-11-updates.PNG)
 
@@ -171,240 +171,31 @@ Brought the Windows 11 client up-to-date before joining it to the Active Directo
 
 ## Join Windows 11 Client to Active Directory Domain
 
-Join `Computer01` to the Active Directory domain hosted by `FileServer01`.
+Joined `Computer01` to the Active Directory domain hosted by `FileServer01`.
 
-1. Open **Settings**.
-2. Select **System → About**.
-3. Select **Advanced system settings**.
-4. Under the **Computer Name** tab, select **Change**.
-5. Select **Domain**.
-6. Enter the Active Directory domain name.
-7. Select **OK**.
-8. Enter credentials for an account with permission to join computers to the domain.
-9. Restart `Computer01` when prompted.
+1. Typed **About** in the taskbar search bar → **About your PC**
+2. Clicked **Domain or workgroup** → Went to the **Computer Name** tab and selected **Change**.
+3. Selected **Domain** and entered `homelab.local`.
+4. Entered the IT user's domain admin credentials that were previously made and restarted.
 
-Example:
+Verified domain membership:
 
-```text
-Domain: <YOUR-DOMAIN>
-Computer Name: Computer01
-```
-
-![Windows 11 Domain Join](screenshots/18-domain-join.png)
+![Windows 11 Domain Join](screenshots/21-win-11-domain-join-verification.png)
 
 ---
 
-## Verify Domain Authentication
+## Move Computer01 to the Correct OU
 
-After restarting `Computer01`, verify that users can authenticate against the Active Directory domain.
+Moved the Windows 11 client computer account into the appropriate OU.
 
-1. At the Windows 11 sign-in screen, select **Other user**.
-2. Sign in using a domain user account.
+1. Opened **Active Directory Users and Computers** on `FileServer01`.
+2. Located the computer account for `Computer01`.
+3. Right-clicked `Computer01` → **Move**
+4. Moved device into the `TX` computer folder.
+5. Added `Kyle Rohm` as the description to assign ownership.
 
-Example:
+![Computer01 Organizational Unit](screenshots/22-computer01.png)
 
-```text
-<YOUR-DOMAIN>\HRUser
-```
-
-After signing in, open Command Prompt and run:
-
-```powershell
-whoami
-```
-
-Verify the computer's domain membership with:
-
-```powershell
-systeminfo | findstr /B /C:"Domain"
-```
-
-The output should show the Active Directory domain.
-
-![Domain Authentication](screenshots/19-domain-authentication.png)
+![Computer01 Description](screenshots/23-computer01-ownership.png)
 
 ---
-
-## Create Security Groups
-
-Create departmental security groups for the test users.
-
-Create the following security groups in the appropriate Organizational Units:
-
-| Security Group | Organizational Unit | Purpose                |
-| -------------- | ------------------- | ---------------------- |
-| HR             | TX → HR             | HR user permissions    |
-| Sales          | TX → Sales          | Sales user permissions |
-| IT             | TX → IT             | IT user permissions    |
-
-These groups can be used to manage permissions based on department rather than assigning permissions to individual user accounts.
-
----
-
-## Configure Group Membership
-
-Configure the membership of the test accounts based on their department.
-
-### HR User
-
-Add the HR user to the `HR` security group.
-
-### Sales User
-
-Add the Sales user to the `Sales` security group.
-
-### IT Domain Administrator
-
-Add the IT administrator to:
-
-* `IT`
-* `Domain Admins`
-
-The `Domain Admins` group provides administrative privileges throughout the domain and should only be used when elevated permissions are required.
-
-### PowerShell Configuration
-
-The Active Directory PowerShell module can be used to configure group membership.
-
-Example:
-
-```powershell
-Add-ADGroupMember `
-    -Identity "HR" `
-    -Members "HRUser"
-```
-
-Add the Sales user:
-
-```powershell
-Add-ADGroupMember `
-    -Identity "Sales" `
-    -Members "SalesUser"
-```
-
-Add the IT administrator to the IT group:
-
-```powershell
-Add-ADGroupMember `
-    -Identity "IT" `
-    -Members "ITAdmin"
-```
-
-Add the IT administrator to the Domain Admins group:
-
-```powershell
-Add-ADGroupMember `
-    -Identity "Domain Admins" `
-    -Members "ITAdmin"
-```
-
-Verify group membership:
-
-```powershell
-Get-ADGroupMember -Identity "HR"
-Get-ADGroupMember -Identity "Sales"
-Get-ADGroupMember -Identity "IT"
-Get-ADGroupMember -Identity "Domain Admins"
-```
-
-![Group Membership](screenshots/20-group-membership.png)
-
----
-
-## Move Computer01 to the Correct Organizational Unit
-
-Move the Windows 11 client computer account into the appropriate Organizational Unit.
-
-1. Open **Active Directory Users and Computers**.
-2. Locate the computer account for `Computer01`.
-3. Right-click `Computer01`.
-4. Select **Move**.
-5. Select `TX → IT`.
-6. Select **OK**.
-
-The resulting Active Directory structure should resemble:
-
-```text
-<YOUR-DOMAIN>
-│
-└── TX
-    │
-    ├── HR
-    │   └── HRUser
-    │
-    ├── IT
-    │   ├── ITAdmin
-    │   └── Computer01
-    │
-    └── Sales
-        └── SalesUser
-```
-
-![Computer01 Organizational Unit](screenshots/21-computer01-ou.png)
-
----
-
-## Add Computer Description
-
-Add the assigned user's name to the description field of the `Computer01` computer account.
-
-1. Open **Active Directory Users and Computers**.
-2. Navigate to `TX → IT`.
-3. Right-click `Computer01`.
-4. Select **Properties**.
-5. Select the **General** tab.
-6. Enter the assigned user's name in the **Description** field.
-7. Select **Apply**.
-8. Select **OK**.
-
-Example:
-
-```text
-Description: <USER-NAME>
-```
-
-![Computer01 Description](screenshots/22-computer01-description.png)
-
----
-
-## Final Active Directory Structure
-
-After completing the configuration, the Active Directory environment should contain the following structure:
-
-```text
-<YOUR-DOMAIN>
-│
-└── TX
-    │
-    ├── HR
-    │   └── HRUser
-    │
-    ├── IT
-    │   ├── ITAdmin
-    │   └── Computer01
-    │
-    └── Sales
-        └── SalesUser
-```
-
-The completed lab demonstrates:
-
-* Active Directory Organizational Unit management
-* User account creation
-* Security group creation
-* Security group membership management
-* Domain administrator configuration
-* Windows 11 client configuration
-* VMware Tools installation
-* Windows Update management
-* Manual DNS configuration
-* Network connectivity testing
-* Active Directory domain joining
-* Domain authentication
-* Computer account management
-* Organizational Unit management
-* Computer description management
-
-```
-```
-
