@@ -43,7 +43,7 @@ The goal is to create shared folders, configure NTFS and share permissions, and 
 
 ## Configure File Server Folders
 
-Create a directory structure to organize shared files by department.
+Created a directory structure to organize shared files by department.
 
 ### Create the Shared Folder
 
