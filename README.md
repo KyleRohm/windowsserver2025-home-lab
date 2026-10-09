@@ -93,3 +93,9 @@ This repository documents the setup and configuration of Active Directory Domain
 This repository documents the setup of an Organizational Unit structure within Active Directory and deployment of a Windows 11 client.
 
 [Read the full guide](03-active-directory-users-and-client/README.md).
+
+## 04 Windows File Server Configuration
+
+This repository documents Windows file server configuration with Active Directory-integrated access control and permission management.
+
+[Read the full guide](04-file-server-&-permissions/README.md).
