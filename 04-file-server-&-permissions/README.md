@@ -106,18 +106,23 @@ Groups
   └── Sales
 ```
 
-5. Add the appropriate domain users to each group.
-6. Verify that each user is a member of the correct group.
+## Assign Security Groups
 
-For example:
+Added each domain user to the corresponding security group:
 
-* `HRUser` → `HR`
-* `SalesUser` → `Sales`
-* `ITAdmin` → `IT`
+1. Right-clicked `Kyle Rohm` in the IT folder.
+2. Clicked `Properties`.
+3. Selected the `Member Of` tab and clicked `Add`.
+4. Typed `IT` in the text field → Check Names → **OK** → **Apply**
 
-Use the actual usernames and group names configured in the lab.
+![Adding Users To Groups](screenshots/31-add-user-to-group.png)
 
-> **Security Note:** Membership in the `Domain Admins` group should be limited to accounts that require domain-wide administrative privileges. Departmental file access should normally be assigned through dedicated security groups.
+5. Repeated this process for the remaining users as represented below:
+
+* `Mary Delgado` → Added `HR` group
+* `Aaron McMurtry` → Added `Sales` group
+
+---
 
 ![Active Directory Security Groups](screenshots/24-file-server-security-groups.png)
 
