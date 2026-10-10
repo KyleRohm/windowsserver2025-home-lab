@@ -168,7 +168,7 @@ Only the `Public` folder can be used by all three users.
 
 ---
 
-## Configure SMB Share Permissions
+## Configure Share Permissions
 
 Full control share permissions were given to all users for the Company Data folder.
 
@@ -185,195 +185,27 @@ Full control share permissions were given to all users for the Company Data fold
 
 ---
 
+## Map Shared Drive
+
+Mapped each user's access to the `Company Data` folder
+
+1. Signed in to `Computer01` as *Mary Delgado*.
+2. Opened **File Explorer**.
+3. Clicked **This PC** → `…` → **Map network drive**
+4. Selected the `S:` drive and entered `\\FileServer01\Company Data` as the UNC path → **Finish**
+
+![Added S: Drive](screenshots/41-post-adding-shared-drive.png)
+
+> This process was repeated for Kyle and Aaron's accounts.
+
 ## Verify Shared Folder Configuration
 
-Verify that each departmental folder is shared successfully.
+Tested the shared folders from the domain-joined Windows 11 client.
 
-1. Open **Server Manager**.
-2. Select **File and Storage Services → Shares**.
-3. Confirm that the `HR`, `IT`, and `Sales` shares appear in the list.
+* Attempted to open the `IT` folder as *Mary Delgado*:
 
-Alternatively, open PowerShell on `FileServer01` and run:
+![Unauthorized Access To IT](screenshots/42-it-folder-restriction-as-hr-user.png)
 
-```powershell
-Get-SmbShare
-```
-
-To view the share permissions for a specific share, run:
-
-```powershell
-Get-SmbShareAccess -Name "HR"
-Get-SmbShareAccess -Name "IT"
-Get-SmbShareAccess -Name "Sales"
-```
-
-Confirm that the share permissions match the intended configuration.
-
-![File Server Shares](screenshots/27-file-server-shares.png)
+> This process was repeated for Kyle and Aaron's accounts, verifying that unauthorized access was blocked.
 
 ---
-
-## Access Shared Folders from Computer01
-
-Test the shared folders from the domain-joined Windows 11 client.
-
-1. Sign in to `Computer01` using a domain user account.
-2. Open **File Explorer**.
-3. Select the address bar.
-4. Enter the network path to the desired share.
-
-Example:
-
-```text
-\\FileServer01\HR
-```
-
-Other available shares:
-
-```text
-\\FileServer01\IT
-\\FileServer01\Sales
-```
-
-If name resolution fails, verify that `Computer01` is using the correct Active Directory DNS server and that `FileServer01` can be reached over the network.
-
-![Access Shared Folders](screenshots/28-access-shared-folders.png)
-
----
-
-## Test Active Directory Access Control
-
-Verify that the configured permissions allow authorized users to access their departmental folders and restrict access to other departments.
-
-### Test HR User Access
-
-1. Sign in to `Computer01` as the HR test user.
-2. Open `\\FileServer01\HR`.
-3. Confirm that the user can access the folder.
-4. Create a test text file if Modify permission is assigned.
-5. Attempt to open `\\FileServer01\Sales`.
-6. Confirm that access is denied if the user is not authorized for the Sales share.
-
-### Test Sales User Access
-
-1. Sign in to `Computer01` as the Sales test user.
-2. Open `\\FileServer01\Sales`.
-3. Confirm that the user can access the folder.
-4. Create a test text file if Modify permission is assigned.
-5. Attempt to open `\\FileServer01\HR`.
-6. Confirm that access is denied if the user is not authorized for the HR share.
-
-### Test IT User Access
-
-1. Sign in using the designated IT test account.
-2. Open `\\FileServer01\IT`.
-3. Confirm that the user can access the folder according to the configured permissions.
-
-Record the results of each test.
-
-| Test                            | Expected Result                 | Status  |
-| ------------------------------- | ------------------------------- | ------- |
-| HR user accesses HR share       | Access allowed                  | Pending |
-| HR user accesses Sales share    | Access denied if not authorized | Pending |
-| Sales user accesses Sales share | Access allowed                  | Pending |
-| Sales user accesses HR share    | Access denied if not authorized | Pending |
-| IT user accesses IT share       | Access allowed                  | Pending |
-
-Update the status column after completing the tests.
-
-> **Note:** These access-denied tests are valid only if the user has no other applicable permissions through group membership, inherited NTFS entries, or share permissions. Verify effective access rather than assuming that membership in one department automatically prevents access to another.
-
-![File Share Access Testing](screenshots/29-file-share-access-testing.png)
-
----
-
-## Troubleshooting File Sharing
-
-Use the following checks if a client cannot access a shared folder.
-
-### Verify Network Connectivity
-
-From `Computer01`, run:
-
-```powershell
-ping <FILESERVER01-IP-ADDRESS>
-```
-
-### Verify DNS Resolution
-
-Run:
-
-```powershell
-nslookup FileServer01
-```
-
-Confirm that the server name resolves to the correct IP address.
-
-### Verify SMB Shares
-
-On `FileServer01`, run:
-
-```powershell
-Get-SmbShare
-```
-
-### Verify Share Permissions
-
-Run:
-
-```powershell
-Get-SmbShareAccess -Name "HR"
-```
-
-Replace `HR` with the appropriate share name when checking the other shares.
-
-### Verify NTFS Permissions
-
-1. Open the folder's **Properties**.
-2. Select the **Security** tab.
-3. Review the configured users and groups.
-4. Check for inherited permissions that may grant or deny access.
-5. Confirm that the intended Active Directory group has the required permissions.
-
-### Verify User Group Membership
-
-Run the following command on a system with the Active Directory PowerShell module:
-
-```powershell
-Get-ADGroupMember -Identity "HR"
-```
-
-Replace `HR` with the appropriate group name as needed.
-
-If a user's group membership was recently changed, sign out and sign back in to refresh the user's logon token before testing again.
-
----
-
-## Final File Server Configuration
-
-After completing the configuration, the lab should include:
-
-* A Windows Server 2025 file server integrated with Active Directory
-* Departmental shared folders for HR, IT, and Sales
-* SMB shares configured for network access
-* NTFS permissions configured on each departmental folder
-* Active Directory security groups used to assign access
-* A domain-joined Windows 11 client accessing shared folders
-* Successful tests confirming that authorized users can access their assigned shares
-* Access-denied tests confirming that unauthorized users cannot access restricted shares
-
-## Skills Demonstrated
-
-* Windows Server file server configuration
-* SMB file sharing
-* NTFS permissions management
-* Share permissions management
-* Active Directory security group management
-* Access control and least privilege
-* Windows client-to-server connectivity
-* File share access testing
-* DNS and network troubleshooting
-* PowerShell administration
-
-```
-```
