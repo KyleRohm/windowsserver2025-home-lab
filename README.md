@@ -76,6 +76,8 @@ The lab uses Network Address Translation (NAT) to allow the virtual machines to 
               │
         File Services
 
+---
+
 ## 01 Windows Server 2025 VM Deployment
 
 This repository documents the setup and configuration of a Windows Server 2025 virtual machine in VMware Workstation.
