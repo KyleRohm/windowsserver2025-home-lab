@@ -46,7 +46,7 @@ The lab is being built incrementally, with each phase documented along the way.
 |---|---|---|---|
 | FileServer01 | Windows Server 2025 | Active Directory| ✔️ Completed |
 | " | " | Domain Server | ✔️ Completed |
-| " | " | File Server | ⚪ Planned |
+| " | " | File Server | ✔️ Completed |
 | Computer01 | Windows 11 Pro | Domain-Joined Client | ✔️ Completed |
 
 > **Note:** The lab environment will be expanded as additional services and client systems are added.
