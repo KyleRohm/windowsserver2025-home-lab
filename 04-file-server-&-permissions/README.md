@@ -44,7 +44,7 @@ The goal is to create shared folders, configure NTFS and share permissions, and 
 
 Created a directory structure to organize shared files by department.
 
-### Create the Shared Folder
+### Created the Shared Folders
 
 1. Signed in to `FileServer01`.
 2. Opened **File Explorer**.
@@ -91,6 +91,8 @@ This restructure separates computers, groups, and users:
 
 ![Restructure](screenshots/26-ou-restructure.png)
 
+---
+
 ## Create Active Directory Security Groups
 
 Used Active Directory security groups to manage access to the previously created folders.
@@ -105,6 +107,10 @@ Groups
   ├── IT
   └── Sales
 ```
+
+![Security Groups](screenshots/30-group-creation.png)
+
+---
 
 ## Assign Security Groups
 
@@ -128,7 +134,7 @@ Added each domain user to the corresponding security group:
 
 Configured permissions on each departmental folder so that access is granted to the appropriate Active Directory security group.
 
-### Configure Company Data Folder Permissions
+### Configured Company Data Folder Permissions
 
 1. Opened **File Explorer** on `FileServer01`.
 2. Navigated to `C:\Company Data`.
@@ -139,19 +145,21 @@ Configured permissions on each departmental folder so that access is granted to 
 7. Selected **Check Names**, then **OK**.
 8. Assigned **Modify** access level and then applied changes.
 
-Repeated the process for the IT, Sales, and Public folders.
-
 ![Modify Level Access](screenshots/34-add-modify-permission-to-hr-user.png)
+
+> Repeated the process for the IT, Sales, and Public folders.
 
 ### NTFS Permission Summary
 
-| Folder            | Active Directory Group | Example NTFS Permission |
+| Folder            | Active Directory Group | NTFS Permission         |
 | ----------------- | ---------------------- | ----------------------- |
 | `C:\Shares\HR`    | `HR`                   | Modify                  |
 | `C:\Shares\IT`    | `IT`                   | Modify                  |
 | `C:\Shares\Sales` | `Sales`                | Modify                  |
 
-### Disable Folder Inheritance
+---
+
+## Disable Folder Inheritance
 
 Disabled inheritance so that users cannot gain access to unauthorized folders.
 
@@ -198,11 +206,13 @@ Mapped each user's access to the `Company Data` folder
 
 > This process was repeated for Kyle and Aaron's accounts.
 
+---
+
 ## Verify Shared Folder Configuration
 
 Tested the shared folders from the domain-joined Windows 11 client.
 
-* Attempted to open the `IT` folder as *Mary Delgado*:
+* Attempted to open the `IT` folder as *Mary Delgado* (HR user):
 
 ![Unauthorized Access To IT](screenshots/42-it-folder-restriction-as-hr-user.png)
 
