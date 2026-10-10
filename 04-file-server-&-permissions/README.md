@@ -37,7 +37,6 @@ The goal is to create shared folders, configure NTFS and share permissions, and 
 | Client Operating System | Windows 11 |
 | Client Computer Name | `Computer01` |
 | Authentication | Active Directory Domain Services |
-| File Sharing Protocol | SMB |
 
 ---
 
@@ -47,44 +46,65 @@ Created a directory structure to organize shared files by department.
 
 ### Create the Shared Folder
 
-1. Sign in to `FileServer01` using an account with administrative privileges.
-2. Open **File Explorer**.
-3. Navigate to the `C:\` drive.
-4. Create a folder named `Shares`.
-5. Inside `C:\Shares`, create the following folders:
+1. Signed in to `FileServer01`.
+2. Opened **File Explorer**.
+3. Navigated to the `C:\` drive and created a folder called `Company Data`.
+4. Inside `C:\Company Data`, the following folders were created:
 
-```text
-C:\Shares
-│
-├── HR
-│
-├── IT
-│
-└── Sales
-````
-
-These folders will contain files shared with the corresponding departments.
-
-> **Note:** This lab uses `C:\Shares` for simplicity. In a production environment, shared data is often stored on a dedicated data volume.
-
-![Shared Folder Structure](screenshots/23-shared-folder-structure.png)
+![Shared Folder Structure](screenshots/24-fileserver01-shared-folders.png)
 
 ---
 
+## OU Restructure
+
+Updated the OU layout to a more intuitive department-based structure.
+
+This restructure separates computers, groups, and users:
+```
+<homelab.local>
+│
+└── US
+     |
+     └── TX 
+         |
+         ├──── Computers
+         |       └── Computer01
+         |
+         ├──── Groups
+         |       ├── HR
+         |       ├── IT
+         |       └── Sales
+         ├──── Users
+                |
+                ├── HR
+                │    └── HRUser
+                |           └── Mary Delgado
+                │
+                ├── IT
+                │    └── ITAdmin
+                │           └── Kyle Rohm
+                |
+                └── Sales
+                      └── SalesUser
+                             └── Aaron McMurtry
+```                      
+
+![Restructure](screenshots/26-ou-restructure.png)
+
 ## Create Active Directory Security Groups
 
-Use Active Directory security groups to manage access to departmental shared folders.
+Used Active Directory security groups to manage access to the previously created folders.
 
-1. Open **Server Manager**.
-2. Select **Tools → Active Directory Users and Computers**.
-3. Navigate to the appropriate Organizational Unit (OU).
-4. Create the following security groups if they do not already exist:
+1. Opened **Server Manager**.
+2. Selected **Tools → Active Directory Users and Computers**.
+3. Created security groups and added them to the correct OU:
 
-| Security Group | Purpose                      |
-| -------------- | ---------------------------- |
-| `HR`           | Access to HR shared files    |
-| `IT`           | Access to IT shared files    |
-| `Sales`        | Access to Sales shared files |
+```
+Groups
+  ├── HR
+  ├── IT
+  └── Sales
+```
 
 5. Add the appropriate domain users to each group.
 6. Verify that each user is a member of the correct group.
