@@ -124,46 +124,24 @@ Added each domain user to the corresponding security group:
 
 ---
 
-![Active Directory Security Groups](screenshots/24-file-server-security-groups.png)
-
----
-
 ## Configure NTFS Permissions
 
-NTFS permissions control which users and groups can access files and folders on the file system.
+Configured permissions on each departmental folder so that access is granted to the appropriate Active Directory security group.
 
-Configure permissions on each departmental folder so that access is granted to the appropriate Active Directory security group.
+### Configure Company Data Folder Permissions
 
-### Configure HR Folder Permissions
+1. Opened **File Explorer** on `FileServer01`.
+2. Navigated to `C:\Company Data`.
+3. Right-clicked the `HR` folder and selected **Properties**.
+4. Opened the **Security** tab.
+5. Selected **Edit** → **Add**
+6. Entered the domain's `HR` security group.
+7. Selected **Check Names**, then **OK**.
+8. Assigned **Modify** access level and then applied changes.
 
-1. Open **File Explorer** on `FileServer01`.
-2. Navigate to `C:\Shares`.
-3. Right-click the `HR` folder and select **Properties**.
-4. Open the **Security** tab.
-5. Select **Edit**.
-6. Select **Add**.
-7. Enter the domain's `HR` security group.
-8. Select **Check Names**, then select **OK**.
-9. Assign the appropriate permissions to the group.
-10. Apply the changes.
+Repeated the process for the IT, Sales, and Public folders.
 
-For this lab, grant the `HR` group **Modify** permission if HR users need to create, edit, and delete files.
-
-### Configure Sales Folder Permissions
-
-Repeat the process for `C:\Shares\Sales`.
-
-* Add the `Sales` security group.
-* Grant **Modify** permission if Sales users need to create, edit, and delete files.
-* Apply the changes.
-
-### Configure IT Folder Permissions
-
-Repeat the process for `C:\Shares\IT`.
-
-* Add the `IT` security group.
-* Grant the access level required for the lab.
-* Apply the changes.
+![Modify Level Access](screenshots/34-add-modify-permission-to-hr-user.png)
 
 ### NTFS Permission Summary
 
@@ -173,45 +151,37 @@ Repeat the process for `C:\Shares\IT`.
 | `C:\Shares\IT`    | `IT`                   | Modify                  |
 | `C:\Shares\Sales` | `Sales`                | Modify                  |
 
-> **Important:** Review the existing permissions before removing any entries. Preserve the permissions required for Windows administration and system operation. Avoid granting `Everyone` or `Domain Users` broad access to departmental data.
+### Disable Folder Inheritance
 
-![NTFS Permissions](screenshots/25-ntfs-permissions.png)
+Disabled inheritance so that users cannot gain access to unauthorized folders.
+
+Only the `Public` folder can be used by all three users.
+
+1. Right-clicked the `HR` folder and went to **Properties**.
+2. Navigated to the **Security** tab and clicked **Advanced**.
+3. Selected `Disable inheritance` → **Convert inherited permissions into explicit permissions on this object**.
+4. Selected both user entries and removed them.
+
+![Disabled Inheritance](screenshots/35-disable-inheritance.png)
+
+> This process was repeated for the `IT` and `Sales` folders. The `Public` folder was assigned **Domain users** as read only access and **IT** as modify access level.
 
 ---
 
 ## Configure SMB Share Permissions
 
-Share permissions control access when users connect to a folder over the network using SMB.
+Full control share permissions were given to all users for the Company Data folder.
 
-### Share the HR Folder
+1. Right-clicked `C:\Company Data`.
+2. Selected **Properties**.
+3. Opened the **Sharing** tab.
+4. Selected **Advanced Sharing**.
+5. Selected **Share this folder**.
+6. Selected **Permissions**.
+7. Selected **Everyone** and clicked **Allow | Full Control**.
+8. Applied the changes.
 
-1. Right-click `C:\Shares\HR`.
-2. Select **Properties**.
-3. Open the **Sharing** tab.
-4. Select **Advanced Sharing**.
-5. Select **Share this folder**.
-6. Set the share name to `HR`.
-7. Select **Permissions**.
-8. Configure the share permissions for the intended users or security groups.
-9. Apply the changes.
-
-Repeat these steps for the `IT` and `Sales` folders, using the corresponding share names.
-
-### Share Permission Summary
-
-For this lab, use a consistent approach:
-
-| Share   | Intended Group | Example Share Permission |
-| ------- | -------------- | ------------------------ |
-| `HR`    | `HR`           | Change and Read          |
-| `IT`    | `IT`           | Change and Read          |
-| `Sales` | `Sales`        | Change and Read          |
-
-Use the **Change** permission when users need to create, modify, or delete shared files.
-
-> **Important:** Effective access over SMB is determined by the combination of share permissions and NTFS permissions. The more restrictive applicable permission limits the user's effective access.
-
-![SMB Share Permissions](screenshots/26-smb-share-permissions.png)
+![Company Data Access Level](screenshots/37-company-data-perms.png)
 
 ---
 
