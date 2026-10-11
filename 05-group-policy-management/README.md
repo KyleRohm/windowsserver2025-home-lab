@@ -141,7 +141,7 @@ Navigate to:
 
 `User Configuration → Policies → Administrative Templates → Control Panel → Personalization`
 
-Configure the following settings, where available in the installed Windows administrative templates:
+Configured the following settings:
 
 | Policy | Configuration |
 |---|---|
@@ -153,25 +153,24 @@ Configure the following settings, where available in the installed Windows admin
 
 ### Configure an Interactive Logon Message
 
-Navigate to:
+Navigated to:
 
 `Computer Configuration → Policies → Windows Settings → Security Settings → Local Policies → Security Options`
 
-Configure the following policies:
+Configured the following policies:
 
 - **Interactive logon: Message title for users attempting to log on**
 - **Interactive logon: Message text for users attempting to log on**
 
-Example configuration:
+Configured the following message:
 
 ```text
-Title: Authorized Users Only
+Title: WARNING: Unauthorized Access
 
-Message: This system is for authorized users only.
-Unauthorized access is prohibited.
+Message: This system is restricted to authorized users.
+Individuals who attempt unauthorized access will be prosecuted.
+If you are not an authorized user, disconnect now.
 ```
-
-This setting displays a notice before users sign in. A logon notice is not a substitute for access controls or other security measures.
 
 ### Save and Verify the GPO
 
@@ -180,7 +179,9 @@ This setting displays a notice before users sign in. A logon notice is not a sub
 3. Confirm that `Workstation Security Baseline` is linked to the `TX` OU.
 4. Confirm that the GPO link is enabled.
 
-![Workstation Security Baseline](screenshots/32-workstation-security-baseline.png)
+![Security Baseline](screenshots/50-security-baseline-settings2.png)
+
+![Security Basedline 2](screenshots/49-security-baseline-settings.png)
 
 ---
 
