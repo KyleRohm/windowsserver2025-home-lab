@@ -6,22 +6,13 @@
 
 This section documents the creation and configuration of Group Policy Objects (GPOs) in the Windows Server 2025 home lab.
 
-Group Policy allows administrators to centrally manage user and computer settings across an Active Directory domain. GPOs can be linked to domains, sites, and Organizational Units (OUs) to enforce security policies and standardize workstation configurations.
-
-In this lab, Group Policy will be used to configure the following:
-* Setup strong password requirements
-* Map network drives for users upon login
-* Set a default desktop wallpaper for all users
-* Prevent users from using USB drives
-* Strengthen Windows 11 workstation security
-
 ## Objectives
 
-- Open and manage Group Policy Management
-- Create and link Group Policy Objects
-- Configure domain password and account lockout policies
-- Configure Windows 11 workstation security settings
-- Configure departmental network drive mappings
+- Setup strong password requirements
+- Map network drives for users upon login
+- Set a default desktop wallpaper for all users
+- Prevent users from using USB drives
+- Strengthen Windows 11 workstation security
 - Control GPO scope through Organizational Units and security groups
 - Apply Group Policy updates
 - Verify GPO application and troubleshoot policy issues
@@ -32,10 +23,8 @@ In this lab, Group Policy will be used to configure the following:
 
 - Windows Server 2025 configured as a Domain Controller
 - Active Directory Domain Services installed and operational
-- Group Policy Management installed
-- Active Directory domain configured as `homelab.local`
-- Organizational Units configured for `TX`, `HR`, `IT`, and `Sales`
-- Domain-joined Windows 11 client named `Computer01`
+- AD organizational structure created
+- Domain-joined Windows 11 client`
 - Active Directory user accounts and departmental security groups configured
 - Departmental file shares configured and accessible on `FileServer01`
 - Administrative access to the Domain Controller
@@ -50,13 +39,40 @@ In this lab, Group Policy will be used to configure the following:
 | Operating System | Windows Server 2025 |
 | Domain Controller | `FileServer01` |
 | Active Directory Domain | `homelab.local` |
-| NetBIOS Domain | `HOMELAB` |
 | Windows Client | Windows 11 |
 | Client Computer Name | `Computer01` |
-| Organizational Unit | `TX` |
-| Departmental OUs | `HR`, `IT`, `Sales` |
-| File Server | `FileServer01` |
-| Group Policy Management | Group Policy Management Console (GPMC) |
+
+---
+
+## Install Group Policy Management
+
+Group Policy Management is used to create, configure, link, and manage Group Policy Objects (GPOs) within an Active Directory environment.
+
+### Installation Steps
+
+1. Sign in to `FileServer01` using an account with administrative privileges.
+2. Open **Server Manager**.
+3. Select **Manage → Add Roles and Features**.
+4. On the **Before You Begin** page, select **Next**.
+5. Select **Role-based or feature-based installation**, then select **Next**.
+6. Select `FileServer01` from the server pool, then select **Next**.
+7. On the **Server Roles** page, leave the existing role selections unchanged and select **Next**.
+8. On the **Features** page, locate and select **Group Policy Management**.
+9. Select **Next**, then select **Install**.
+10. Wait for the installation to complete.
+11. Select **Close** when the installation finishes.
+
+> **Note:** If Group Policy Management is already installed, you can skip this section and proceed to opening the console.
+
+### Verify Installation
+
+1. In Server Manager, select **Tools**.
+2. Confirm that **Group Policy Management** appears in the menu.
+3. Select **Group Policy Management** to open the console.
+4. Expand **Forest: homelab.local → Domains → homelab.local**.
+5. Verify that the Active Directory domain and its Group Policy Objects are displayed.
+
+![Group Policy Management Installation](screenshots/30-install-group-policy-management.png)
 
 ---
 
