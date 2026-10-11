@@ -23,6 +23,7 @@ This section documents the creation and configuration of Group Policy Objects (G
 
 - Windows Server 2025 configured as a Domain Controller
 - Active Directory Domain Services installed and operational
+- Group Policy Management installed
 - AD organizational structure created
 - Domain-joined Windows 11 client`
 - Active Directory user accounts and departmental security groups configured
@@ -44,90 +45,39 @@ This section documents the creation and configuration of Group Policy Objects (G
 
 ---
 
-## Install Group Policy Management
-
-Group Policy Management is used to create, configure, link, and manage Group Policy Objects (GPOs) within an Active Directory environment.
-
-### Installation Steps
-
-1. Sign in to `FileServer01` using an account with administrative privileges.
-2. Open **Server Manager**.
-3. Select **Manage → Add Roles and Features**.
-4. On the **Before You Begin** page, select **Next**.
-5. Select **Role-based or feature-based installation**, then select **Next**.
-6. Select `FileServer01` from the server pool, then select **Next**.
-7. On the **Server Roles** page, leave the existing role selections unchanged and select **Next**.
-8. On the **Features** page, locate and select **Group Policy Management**.
-9. Select **Next**, then select **Install**.
-10. Wait for the installation to complete.
-11. Select **Close** when the installation finishes.
-
-> **Note:** If Group Policy Management is already installed, you can skip this section and proceed to opening the console.
-
-### Verify Installation
-
-1. In Server Manager, select **Tools**.
-2. Confirm that **Group Policy Management** appears in the menu.
-3. Select **Group Policy Management** to open the console.
-4. Expand **Forest: homelab.local → Domains → homelab.local**.
-5. Verify that the Active Directory domain and its Group Policy Objects are displayed.
-
-![Group Policy Management Installation](screenshots/30-install-group-policy-management.png)
-
----
-
-## Open Group Policy Management
-
-Group Policy Management is used to create, configure, link, and troubleshoot Group Policy Objects.
-
-### Configuration Steps
-
-1. Sign in to `FileServer01` using an account with administrative privileges.
-2. Open **Server Manager**.
-3. Select **Tools → Group Policy Management**.
-4. Expand **Forest: homelab.local**.
-5. Expand **Domains**.
-6. Expand `homelab.local`.
-7. Review the existing domain and Organizational Unit structure.
-
-The Group Policy Management Console should display the domain and its available Group Policy Objects.
-
-![Group Policy Management Console](screenshots/30-group-policy-management.png)
-
----
-
 ## Create a Domain Password and Account Lockout Policy
 
-Create a GPO to establish password requirements and account lockout settings for domain user accounts.
+Created a GPO to establish password requirements and account lockout settings for domain user accounts.
 
-Domain password and account lockout policies should be configured through a GPO linked at the domain level. Linking these account policies only to a departmental OU will not establish the domain-wide account policy.
+> Note: Domain password and account lockout policies should be configured through a GPO linked at the domain level. Linking these account policies only to a departmental OU will not establish the domain-wide account policy.
 
 ### Create the GPO
 
-1. Open **Group Policy Management**.
-2. Right-click `homelab.local` under **Domains**.
-3. Select **Create a GPO in this domain, and Link it here**.
-4. Name the GPO `Domain Password and Account Lockout Policy`.
+1. Opened **Group Policy Management**.
+2. Right-clicked `homelab.local` under **Domains**.
+3. Selected **Create a GPO in this domain, and Link it here**.
+4. Named the GPO `Domain Password and Account Lockout Policy`.
 5. Select **OK**.
-6. Right-click the new GPO.
+6. Right-clicked the new GPO.
 7. Select **Edit**.
 
 ### Configure Password Policy
 
-In the Group Policy Management Editor, navigate to:
+In the Group Policy Management Editor, navigated to:
 
 `Computer Configuration → Policies → Windows Settings → Security Settings → Account Policies → Password Policy`
 
-Configure the following settings:
+Configured the following settings:
 
 | Policy | Example Configuration |
 |---|---|
-| Enforce password history | 10 passwords remembered |
 | Minimum password length | 12 characters |
 | Password must meet complexity requirements | Enabled |
+| Maximum password age | 90 day |
+| Enforce password history | 10 passwords remembered |
 | Minimum password age | 1 day |
 
-Leave the maximum password age unconfigured unless a defined requirement calls for periodic password changes. Password changes should also be required when a password is compromised or otherwise needs to be replaced.
+> Note: The remaining policies were left as default
 
 ### Configure Account Lockout Policy
 
@@ -140,12 +90,11 @@ Configure the following settings:
 | Policy | Example Configuration |
 |---|---|
 | Account lockout threshold | 5 invalid logon attempts |
-| Account lockout duration | 15 minutes |
-| Reset account lockout counter after | 15 minutes |
+| Account lockout duration | 0 minutes |
+| Reset account lockout counter after | 30 minutes |
 
-Windows may prompt you to confirm related account lockout settings when configuring the threshold. Review the resulting values and confirm that they match the intended configuration.
-
-These settings help reduce the risk of password guessing while allowing accounts to unlock automatically after the configured duration.
+**Summary**:
+These settings help reduce the risk of password guessing by locking accounts after five consecutive failed logon attempts. Locked accounts must be manually unlocked by an administrator, while the failed-attempt counter resets after 30 minutes.
 
 ### Save and Verify the GPO
 
@@ -154,9 +103,9 @@ These settings help reduce the risk of password guessing while allowing accounts
 3. Confirm that `Domain Password and Account Lockout Policy` is linked to `homelab.local`.
 4. Confirm that the GPO is enabled.
 
-> **Security Note:** These are example lab settings, not a complete production security baseline. Account lockout thresholds should be evaluated alongside the risk of denial-of-service attacks against user accounts.
+![Domain Password and Account Lockout Policy](screenshots/45-password-lockout-enabled.png)
 
-![Domain Password and Account Lockout Policy](screenshots/31-domain-password-policy.png)
+![Domain Password and Account Lockout Policy 2](screenshots/46-password-lockout-enabled2.png)
 
 ---
 
