@@ -187,39 +187,36 @@ If you are not an authorized user, disconnect now.
 
 ## Configure Departmental Network Drive Mappings
 
-Create a third GPO to map departmental shared folders as network drives based on Active Directory security group membership.
+Created a third GPO to map departmental shared folders as network drives based on Active Directory security group membership.
 
 This configuration integrates Group Policy with the file shares created in the previous section.
 
 ### Create the GPO
 
-1. Open **Group Policy Management**.
-2. Right-click the `TX` OU.
-3. Select **Create a GPO in this domain, and Link it here**.
-4. Name the GPO `Department Network Drive Mapping`.
-5. Select **OK**.
-6. Right-click the GPO and select **Edit**.
+1. Opened **Group Policy Management**.
+2. Right-clicked the `TX` OU.
+3. Selected **Create a GPO in this domain, and Link it here**.
+4. Named the GPO `Department Network Drive Mapping` and selected **OK**.
+5. Right-clicked the GPO and select **Edit**.
 
 ### Configure the HR Network Drive
 
-Navigate to:
+Navigated to:
 
 `User Configuration → Preferences → Windows Settings → Drive Maps`
 
-1. Right-click **Drive Maps**.
-2. Select **New → Mapped Drive**.
+1. Right-clicked **Drive Maps**.
+2. Selected **New → Mapped Drive**.
 3. Set **Action** to `Update`.
 4. Set **Location** to `\\FileServer01\HR`.
-5. Choose an available drive letter, such as `H:`.
-6. Enter a label such as `HR Shared Folder`.
-7. Open the **Common** tab.
-8. Enable **Item-level targeting**.
-9. Select **Targeting**.
-10. Add a **Security Group** targeting item.
-11. Specify the `HOMELAB\HR` security group.
-12. Save the configuration.
+5. Chose `H:` as the shared drive letter.
+6. Entered `HR Shared Folder` as the label.
+7. Opened the **Common** tab.
+8. Enabled **Item-level targeting** and selected **Targeting**.
+9. Added a **Security Group** targeting item.
+10. Specified the `HOMELAB\HR` security group and saved the configuration.
 
-The drive mapping should be applied only when the logged-on user belongs to the HR security group.
+> Note: The drive mapping will be applied only when the logged-on user belongs to the HR security group.
 
 ### Configure the Sales Network Drive
 
