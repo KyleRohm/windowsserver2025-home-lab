@@ -98,10 +98,10 @@ These settings help reduce the risk of password guessing by locking accounts aft
 
 ### Save and Verify the GPO
 
-1. Close the Group Policy Management Editor.
-2. Return to Group Policy Management.
-3. Confirm that `Domain Password and Account Lockout Policy` is linked to `homelab.local`.
-4. Confirm that the GPO is enabled.
+1. Closed the Group Policy Management Editor.
+2. Returned to Group Policy Management.
+3. Confirmed that `Domain Password and Account Lockout Policy` is linked to `homelab.local`.
+4. Confirmed that the GPO is enabled.
 
 ![Domain Password and Account Lockout Policy](screenshots/45-password-lockout-enabled.png)
 
@@ -113,33 +113,27 @@ These settings help reduce the risk of password guessing by locking accounts aft
 
 Create a second GPO to configure security settings for domain-joined Windows workstations.
 
-For this lab, the GPO will be linked to the `TX` OU. Since `Computer01` is located in `TX → IT`, its computer settings can receive the policy through the OU hierarchy.
-
 ### Create the GPO
 
-1. Open **Group Policy Management**.
-2. Expand `homelab.local`.
-3. Expand the `TX` OU.
-4. Right-click `TX`.
-5. Select **Create a GPO in this domain, and Link it here**.
-6. Name the GPO `Workstation Security Baseline`.
-7. Select **OK**.
-8. Right-click the GPO and select **Edit**.
+1. Opened **Group Policy Management**.
+2. Expanded OU and right-clicked `TX`.
+3. Selected **Create a GPO in this domain, and Link it here**.
+4. Named the GPO `Workstation Security Baseline` → Selected **OK**.
+5. Right-clicked the GPO and selected **Edit**.
 
 ### Configure Windows Defender Firewall
 
-Navigate to:
+Navigated to:
 
 `Computer Configuration → Policies → Windows Settings → Security Settings → Windows Defender Firewall with Advanced Security`
 
-1. Select **Windows Defender Firewall with Advanced Security**.
-2. Open its properties.
-3. Configure the firewall to remain enabled for the Domain, Private, and Public profiles.
-4. Retain the default inbound-blocking behavior unless a specific application or lab requirement requires an exception.
-5. Review the outbound rules and leave the default outbound behavior unchanged unless a specific requirement calls for a change.
-6. Apply the settings.
+1. Selected **Windows Defender Firewall with Advanced Security**.
+2. Configured the firewall to remain enabled for the Domain, Private, and Public profiles.
+3. Left the default inbound and outbound connections → Applied
 
-Keeping the firewall enabled helps protect the workstation from unsolicited inbound network connections.
+> Keeping the firewall enabled helps protect the workstation from unsolicited inbound network connections.
+
+![Firewall Settings](screenshots/47-firewall-settings.png)
 
 ### Configure Automatic Screen Lock
 
