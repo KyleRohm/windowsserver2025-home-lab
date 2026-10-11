@@ -145,13 +145,11 @@ Configure the following settings, where available in the installed Windows admin
 
 | Policy | Configuration |
 |---|---|
+| Enable screen saver | Enabled |
 | Password protect the screen saver | Enabled |
 | Screen saver timeout | Enabled; 600 seconds |
-| Force specific screen saver | Configure only if required for the lab |
 
-The screen saver timeout is set to 600 seconds (10 minutes). Password protection requires the user to authenticate again after the workstation locks.
-
-> **Note:** User Configuration settings apply according to the user's Group Policy scope, not simply because the computer is located in the `TX` OU. The workstation firewall settings are computer policies and follow the computer account's OU.
+> The screen saver timeout is set to 600 seconds (10 minutes). Password protection requires the user to authenticate again after the workstation locks.
 
 ### Configure an Interactive Logon Message
 
