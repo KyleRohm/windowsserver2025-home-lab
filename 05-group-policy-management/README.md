@@ -174,10 +174,10 @@ If you are not an authorized user, disconnect now.
 
 ### Save and Verify the GPO
 
-1. Close the Group Policy Management Editor.
-2. Return to Group Policy Management.
-3. Confirm that `Workstation Security Baseline` is linked to the `TX` OU.
-4. Confirm that the GPO link is enabled.
+1. Closed the Group Policy Management Editor.
+2. Returned to Group Policy Management.
+3. Confirmed that `Workstation Security Baseline` is linked to the `TX` OU.
+4. Confirmed that the GPO link is enabled.
 
 ![Security Baseline](screenshots/50-security-baseline-settings2.png)
 
@@ -190,6 +190,8 @@ If you are not an authorized user, disconnect now.
 Created a third GPO to map departmental shared folders as network drives based on Active Directory security group membership.
 
 This configuration integrates Group Policy with the file shares created in the previous section.
+
+> Note: Before proceeding, the shared drives that were manually mapped in the last section were removed so that this GPO can be used to map them for all users automatically.
 
 ### Create the GPO
 
@@ -207,10 +209,10 @@ Navigated to:
 
 1. Right-clicked **Drive Maps**.
 2. Selected **New → Mapped Drive**.
-3. Set **Action** to `Update`.
-4. Set **Location** to `\\FileServer01\HR`.
-5. Chose `H:` as the shared drive letter.
-6. Entered `HR Shared Folder` as the label.
+3. Left **Action** as `Update`.
+4. Set **Location** to `\\FileServer01\Company Data\HR`.
+5. Entered `Human Resources` as the label.
+6. Chose `H:` as the shared drive letter.
 7. Opened the **Common** tab.
 8. Enabled **Item-level targeting** and selected **Targeting**.
 9. Added a **Security Group** targeting item.
@@ -218,71 +220,52 @@ Navigated to:
 
 > Note: The drive mapping will be applied only when the logged-on user belongs to the HR security group.
 
-### Configure the Sales Network Drive
+### Configured the Sales Network Drive
 
-Create another mapped drive item with the following settings:
+Created another mapped drive item with the following settings:
 
 | Setting | Configuration |
 |---|---|
 | Action | Update |
-| Location | `\\FileServer01\Sales` |
+| Location | `\\FileServer01\Company Data\Sales` |
 | Drive Letter | `S:` |
-| Label | Sales Shared Folder |
+| Label | Sales |
 | Item-level targeting | `HOMELAB\Sales` security group |
 
-### Configure the IT Network Drive
+### Configured the IT Network Drive
 
 Create another mapped drive item with the following settings:
 
 | Setting | Configuration |
 |---|---|
 | Action | Update |
-| Location | `\\FileServer01\IT` |
+| Location | `\\FileServer01\Company Data\IT` |
 | Drive Letter | `I:` |
-| Label | IT Shared Folder |
+| Label | IT |
 | Item-level targeting | `HOMELAB\IT` security group |
 
-Use the actual domain and security group names configured in Active Directory.
+![Department Network Drive Mapping](screenshots/54-shared-drive-mappings.png)
 
 ### Verify the Drive Mapping GPO
 
-1. Close the Group Policy Management Editor.
-2. Confirm that `Department Network Drive Mapping` is linked to the `TX` OU.
-3. Confirm that the GPO is enabled.
-4. Verify that each mapped drive item has the correct UNC path and item-level targeting.
+1. Closed the Group Policy Management Editor.
+2. Confirmed that `Department Network Drive Mapping` is linked to the `TX` OU.
+3. Confirmed that the GPO is enabled.
+4. Verified that each mapped drive item has the correct UNC path and item-level targeting.
 
-> **Important:** Drive mapping preferences do not grant file access by themselves. The corresponding share and NTFS permissions must still allow the user to access the folder. Also, user settings apply only to users within the GPO's effective scope. If a test user is outside the `TX` OU, the mapping policy may need to be linked or scoped differently.
+> **Note:** These drive mapping preferences do not grant file access by themselves. The corresponding share and NTFS permissions created in the last section is what actually allows the users to access the folders.
 
-![Department Network Drive Mapping](screenshots/33-department-drive-mapping.png)
+![Network Drive Mapping](screenshots/56-network-drive-gpo-linked.png)
 
----
-
-## Apply Group Policy Updates
-
-After configuring the GPOs, refresh Group Policy on `Computer01` to retrieve the latest settings.
-
-### Force a Group Policy Update
-
-1. Sign in to `Computer01` using a domain account.
-2. Open **Command Prompt** or **PowerShell**.
-3. Run the following command:
-
-```powershell
-gpupdate /force
-```
-
-4. Wait for the computer and user policy updates to finish.
-5. Restart the computer or sign out and back in if prompted or required for the settings being tested.
-
-Computer policies and user policies may refresh at different times. A forced refresh does not eliminate the need to restart or sign in again for settings that require it.
-
-![Group Policy Update](screenshots/34-group-policy-update.png)
+![Network Drive Mapping 2](screenshots/55-network-drive-gpo-enabled.png)
 
 ---
 
 ## Verify Applied Group Policies
 
-Use the Resultant Set of Policy tools to confirm which policies are applied to `Computer01`.
+Logged on as `Kyle Rohm` after configuring the GPOs and ran `gpupdate /force`.
+
+Used the Resultant Set of Policy tools to confirm which policies are applied to `Computer01`.
 
 ### Verify with GPResult
 
