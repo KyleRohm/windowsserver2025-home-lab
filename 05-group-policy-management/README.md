@@ -8,7 +8,12 @@ This section documents the creation and configuration of Group Policy Objects (G
 
 Group Policy allows administrators to centrally manage user and computer settings across an Active Directory domain. GPOs can be linked to domains, sites, and Organizational Units (OUs) to enforce security policies and standardize workstation configurations.
 
-In this lab, Group Policy will be used to configure domain password requirements, strengthen Windows 11 workstation security, and map departmental network drives based on Active Directory group membership.
+In this lab, Group Policy will be used to configure the following:
+* Setup strong password requirements
+* Map network drives for users upon login
+* Set a default desktop wallpaper for all users
+* Prevent users from using USB drives
+* Strengthen Windows 11 workstation security
 
 ## Objectives
 
