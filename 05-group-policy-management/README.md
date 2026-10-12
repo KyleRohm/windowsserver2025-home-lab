@@ -267,28 +267,15 @@ Logged on as `Mary Delgado` after configuring the GPOs and ran `gpupdate /force`
 
 Verified all GPO's are working as intended:
 
-### Verify with GPResult
+### Logon Message:
 
-Open Command Prompt on `Computer01` and run:
+![Logon Message](screenshots/52-unauthorized-logon-message.png)
 
-```powershell
-gpresult /r
-```
+### Account Lockout:
 
-Review the output for:
+![Account Lockout](screenshots/57-5-invalid-logon-attempts.png)
 
-- The computer's domain membership
-- The applied computer Group Policy Objects
-- The applied user Group Policy Objects
-- Any GPOs that were denied or not applied
-
-To generate a more detailed HTML report, run:
-
-```powershell
-gpresult /h "%USERPROFILE%\Desktop\gpresult.html"
-```
-
-Open the generated report on the desktop and review the applied policies.
+---
 
 ### Verify with Group Policy Results
 
