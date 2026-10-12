@@ -266,184 +266,42 @@ Create another mapped drive item with the following settings:
 
 ## Verify Applied Group Policies
 
-Logged on as `Mary Delgado` after configuring the GPOs and ran `gpupdate /force`.
-
-Verified all GPO's are working as intended:
-
 ### Logon Message:
+
+Powered on `Computer01` and was presented with the logon message.
 
 ![Logon Message](screenshots/52-unauthorized-logon-message.png)
 
 ### Account Lockout:
 
+Entered 5 invalid password attempts as `mary.delgado`.
+
 ![Account Lockout](screenshots/57-5-invalid-logon-attempts.png)
 
 ### New Password Complexity Requirements:
 
+Required to set a new password and and tested complexity requirements.
+
 ![Password Complexity](screenshots/59-complexity-requirements-new.png)
 
-### Drive Mapping:
+### Shared Drive Mapping:
+
+Ran `gpupdate /force` and selected **This PC** in File Explorer.
 
 ![Drive Mapping](screenshots/53-automatic-mapping-new.png)
 
 ### Windows Defender Firewall:
 
+Tested firewall profile settings.
+
 ![Windows Defender Firewall](screenshots/61-firewall-settings.png)
 
 ### Workstation Security Baseline:
 
+Verified security GPO was applied.
+
 ![Workstation Security Baseline](screenshots/60-workstation-security-baseline-policy.png)
 
----
-
-### Verify with Group Policy Results
-
-1. Open **Group Policy Management** on `FileServer01`.
-2. Right-click **Group Policy Results**.
-3. Select **Group Policy Results Wizard**.
-4. Select `Computer01` as the target computer.
-5. Select the appropriate logged-on user if prompted.
-6. Complete the wizard.
-7. Review the resulting report for applied and denied GPOs.
-
-![Group Policy Results](screenshots/35-group-policy-results.png)
+*Note: These verification steps were successfully repeated on the other two user accounts.*
 
 ---
-
-## Test Group Policy Configuration
-
-Verify that each GPO behaves as intended.
-
-### Test Domain Password Policy
-
-1. Confirm that the password policy GPO is linked at the domain level.
-2. Review the configured password requirements in Group Policy Management.
-3. Use a dedicated test account to validate password requirements where appropriate.
-4. Avoid repeated failed attempts against important accounts while testing account lockout behavior.
-
-Password policy changes do not necessarily force existing passwords to change immediately. Test the configured requirements with a suitable test account and document the observed result.
-
-### Test Workstation Security Settings
-
-On `Computer01`:
-
-1. Run `gpupdate /force`.
-2. Run `gpresult /r`.
-3. Confirm that `Workstation Security Baseline` appears in the applied computer policies.
-4. Verify that Windows Defender Firewall remains enabled.
-5. Verify that the configured logon notice appears.
-6. Verify the screen lock behavior after the configured timeout, if the user policy is in scope.
-
-### Test Departmental Drive Mappings
-
-1. Sign in to `Computer01` as the HR test user.
-2. Confirm that the `H:` drive appears and opens `\\FileServer01\HR`.
-3. Sign out and sign in as the Sales test user.
-4. Confirm that the `S:` drive appears and opens `\\FileServer01\Sales`.
-5. Sign in as the IT test user.
-6. Confirm that the `I:` drive appears and opens `\\FileServer01\IT`.
-7. Verify that users cannot access departmental shares for which they lack permission.
-
-The drive mappings depend on user policy scope, group membership, DNS resolution, SMB connectivity, and the existing file share permissions.
-
-### Test Results
-
-| Test | Expected Result | Status |
-|---|---|---|
-| Domain password policy configured | Password requirements are configured at the domain level | Pending |
-| Account lockout policy configured | Lockout threshold and duration are configured | Pending |
-| Workstation Security Baseline applied | GPO appears in applied computer policies | Pending |
-| Windows Defender Firewall | Firewall remains enabled | Pending |
-| Interactive logon notice | Configured notice appears before sign-in | Pending |
-| HR drive mapping | HR user receives the HR drive | Pending |
-| Sales drive mapping | Sales user receives the Sales drive | Pending |
-| IT drive mapping | IT user receives the IT drive | Pending |
-| Unauthorized file access | Access is denied where no applicable permission exists | Pending |
-
-Update the status column after performing each test.
-
-![Group Policy Testing](screenshots/36-group-policy-testing.png)
-
----
-
-## Troubleshoot Group Policy
-
-If a policy does not apply as expected, verify the following.
-
-### Verify GPO Links
-
-1. Open Group Policy Management.
-2. Confirm that the GPO is linked to the correct domain or OU.
-3. Confirm that the link is enabled.
-4. Check whether inheritance is blocked or enforced links affect the expected result.
-
-### Verify the Computer and User OU Locations
-
-- Computer policies are processed according to the computer account's effective Group Policy scope.
-- User policies are processed according to the user account's effective Group Policy scope, subject to any configured loopback processing.
-- A computer located in `TX → IT` does not automatically cause HR or Sales user policies to apply to users in other OUs.
-
-### Verify Security Filtering
-
-1. Select the GPO in Group Policy Management.
-2. Review **Scope → Security Filtering**.
-3. Confirm that the intended computer or user has the required permissions to read and apply the GPO.
-4. Check the **Delegation** tab if permissions appear incorrect.
-
-Avoid removing `Authenticated Users` without first configuring appropriate read and apply permissions for the intended target accounts.
-
-### Review Group Policy Results
-
-Run:
-
-```powershell
-gpresult /r
-```
-
-For additional detail:
-
-```powershell
-gpresult /h "%USERPROFILE%\Desktop\gpresult.html"
-```
-
-Review the report for denied policies, filtering issues, and unexpected scope.
-
-### Verify DNS and Domain Connectivity
-
-From `Computer01`, run:
-
-```powershell
-nslookup homelab.local
-nslookup FileServer01
-```
-
-Confirm that DNS resolves through the Active Directory DNS server and that the client can communicate with the Domain Controller.
-
----
-
-## Final Group Policy Configuration
-
-After completing this section, the lab should include:
-
-- A domain-level password and account lockout policy
-- A workstation security baseline linked to the appropriate OU
-- A departmental network drive mapping GPO
-- Group Policy scope configured for the intended users and computers
-- Group Policy updates applied to the Windows 11 client
-- Verification of applied policies using `gpresult` and Group Policy Results
-- Testing of departmental drive mappings and file share access
-- Troubleshooting of policy application and scope
-
-## Skills Demonstrated
-
-- Group Policy Management Console administration
-- GPO creation, configuration, and linking
-- Domain password and account lockout policy configuration
-- Windows workstation security configuration
-- Active Directory OU and GPO scope management
-- Group Policy Preferences
-- Security group-based drive mapping
-- NTFS and SMB permission integration
-- `gpupdate` and `gpresult` troubleshooting
-- Group Policy Results analysis
-```
