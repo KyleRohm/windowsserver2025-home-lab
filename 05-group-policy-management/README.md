@@ -278,6 +278,14 @@ Verified all GPO's are working as intended:
 
 ![Account Lockout](screenshots/57-5-invalid-logon-attempts.png)
 
+### New Password Complexity Requirements:
+
+![Password Complexity](screenshots/59-complexity-requirements-new.png)
+
+### Drive Mapping:
+
+![Drive Mapping](screenshots/53-automatic-mapping-new.png)
+
 ---
 
 ### Verify with Group Policy Results
