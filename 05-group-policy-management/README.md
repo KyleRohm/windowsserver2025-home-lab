@@ -263,9 +263,9 @@ Create another mapped drive item with the following settings:
 
 ## Verify Applied Group Policies
 
-Logged on as `Kyle Rohm` after configuring the GPOs and ran `gpupdate /force`.
+Logged on as `Mary Delgado` after configuring the GPOs and ran `gpupdate /force`.
 
-Used the Resultant Set of Policy tools to confirm which policies are applied to `Computer01`.
+Verified all GPO's are working as intended:
 
 ### Verify with GPResult
 
