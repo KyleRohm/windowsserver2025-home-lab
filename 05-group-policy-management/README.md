@@ -247,7 +247,7 @@ Create another mapped drive item with the following settings:
 | Label | IT |
 | Item-level targeting | `HOMELAB\IT` security group |
 
-![Department Network Drive Mapping](screenshots/54-shared-drive-mappings.png)
+![Department Network Drive Mapping](screenshots/54-shared-drive-mappings-new.png)
 
 ### Verify the Drive Mapping GPO
 
