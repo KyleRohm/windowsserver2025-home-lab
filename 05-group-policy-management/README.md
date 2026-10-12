@@ -77,7 +77,10 @@ Configured the following settings:
 | Enforce password history | 10 passwords remembered |
 | Minimum password age | 1 day |
 
-> Note: The remaining policies were left as default
+> Note: The remaining policies were left as default.
+> 
+> Enabled **User must change password at next logon** and disabled **Password never expires** for all users in Active Directory to test password requirements later.
+
 
 ### Configure Account Lockout Policy
 
