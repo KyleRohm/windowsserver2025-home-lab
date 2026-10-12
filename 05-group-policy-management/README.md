@@ -286,6 +286,14 @@ Verified all GPO's are working as intended:
 
 ![Drive Mapping](screenshots/53-automatic-mapping-new.png)
 
+### Windows Defender Firewall:
+
+![Windows Defender Firewall](screenshots/61-firewall-settings.png)
+
+### Workstation Security Baseline:
+
+![Workstation Security Baseline](screenshots/60-workstation-security-baseline-policy.png)
+
 ---
 
 ### Verify with Group Policy Results
